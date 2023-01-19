@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import useTrendingMovie from "../../hooks/api/useTrendingMovies";
+import useUpcomingMovie from "../../hooks/api/useUpcomingMovies";
 
 import MediaCard from "../MediaCard";
 import { Container, List, Text } from "./ListStyle";
 
-export default function TrendingList({ children }) {
+export default function UpcomingList({ children }) {
   const [movieList, setMovieList] = useState([]);
-  const { getTrending } = useTrendingMovie();
+  const { getUpcoming } = useUpcomingMovie();
 
   useEffect(() => {
-    const promisse = getTrending();
+    const promisse = getUpcoming();
     promisse.then((p) => {
       if (p) setMovieList(p.results.slice(0, 5));
     });

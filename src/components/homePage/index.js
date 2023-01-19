@@ -1,12 +1,14 @@
 import TrendingList from "./TrendingList";
 import styled from "styled-components";
 import RatedList from "./TopRatedList";
+import UpcomingList from "./UpcomingList";
 
 export default function HomePage() {
   return (
     <Home>
       <TrendingList>Trending Now</TrendingList>
       <RatedList>All time Popular</RatedList>
+      <UpcomingList>Upcoming movies</UpcomingList>
     </Home>
   );
 }

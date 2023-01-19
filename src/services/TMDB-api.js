@@ -11,3 +11,9 @@ export async function getRatedList() {
 
   return response.data;
 }
+
+export async function getUpcomingList() {
+  const response = await api.get("/movies/upcoming");
+
+  return response.data;
+}
