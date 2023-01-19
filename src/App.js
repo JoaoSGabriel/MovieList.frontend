@@ -1,5 +1,18 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import HomePage from "./pages/HomePage";
+
 function App() {
-  return <>Hello world</>;
+  return (
+    <>
+      <ToastContainer />
+      <Router>
+        <Routes>
+          <Route path="/" element={HomePage} />
+        </Routes>
+      </Router>
+    </>
+  );
 }
 
 export default App;
