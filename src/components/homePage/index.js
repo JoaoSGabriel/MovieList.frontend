@@ -1,10 +1,12 @@
 import TrendingList from "./TrendingList";
 import styled from "styled-components";
+import RatedList from "./TopRatedList";
 
 export default function HomePage() {
   return (
     <Home>
       <TrendingList>Trending Now</TrendingList>
+      <RatedList>All time Popular</RatedList>
     </Home>
   );
 }

@@ -19,7 +19,6 @@ const Container = styled.div`
   width: 100%;
   background: #2b2d42;
   color: #bcbedc;
-  margin: 0 0 20px 0;
 `;
 
 const Wrappler = styled.div`

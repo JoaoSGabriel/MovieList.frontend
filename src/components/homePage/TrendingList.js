@@ -29,6 +29,7 @@ export default function TrendingList({ children }) {
 const List = styled.div`
   width: 100%;
   max-width: 1440px;
+  margin: 40px 0 20px 0;
 `;
 
 const Container = styled.div`

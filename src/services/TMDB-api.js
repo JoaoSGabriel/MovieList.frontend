@@ -5,3 +5,9 @@ export async function getTrendingList() {
 
   return response.data;
 }
+
+export async function getRatedList() {
+  const response = await api.get("/movies/toprated");
+
+  return response.data;
+}
