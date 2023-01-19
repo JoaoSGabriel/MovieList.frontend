@@ -1,7 +1,11 @@
+import TrendingList from "./TrendingList";
+import Navbar from "./Navbar";
+
 export default function HomePage() {
   return (
     <>
-      <h1>Hello World</h1>
+      <Navbar />
+      <TrendingList>Trending Now</TrendingList>
     </>
   );
 }
