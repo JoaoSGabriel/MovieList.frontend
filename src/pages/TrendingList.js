@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import useTrendingMovie from "../hooks/api/useTrendingMovies";
+import MediaCard from "./MediaCard";
 
 export default function TrendingList({ children }) {
   const [movieList, setMovieList] = useState([]);
@@ -9,23 +10,30 @@ export default function TrendingList({ children }) {
   useEffect(() => {
     const promisse = getTrending();
     promisse.then((p) => {
-      if (p) console.log(p.results);
+      if (p) setMovieList(p.results.slice(0, 5));
     });
   }, []);
 
   return (
-    <Container>
-      <h1>{children}</h1>
-    </Container>
+    <>
+      <Text>{children}</Text>
+      <Container>
+        {movieList.map((value, index) => (
+          <MediaCard key={index} info={value} />
+        ))}
+      </Container>
+    </>
   );
 }
 
 const Container = styled.div`
-  h1 {
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin: 0;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-  }
+  display: flex;
+`;
+
+const Text = styled.div`
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 15px 0;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
 `;
