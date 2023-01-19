@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
-import HomePage from "./pages/HomePage";
+import Dashboard from "./pages/Dashboard";
 import MediaPage from "./pages/MediaPage";
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
       <ToastContainer />
       <Router>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<Dashboard />} />
           <Route path="/Movie/:id" element={<MediaPage />} />
         </Routes>
       </Router>

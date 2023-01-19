@@ -17,11 +17,9 @@ export default function MediaCard({ info }) {
 }
 
 const Container = styled.div`
-  width: 185px;
-  margin: 0 20px 20px 0;
   cursor: pointer;
   img {
-    width: 185px;
-    height: 273px;
+    width: 250px;
+    height: 375px;
   }
 `;

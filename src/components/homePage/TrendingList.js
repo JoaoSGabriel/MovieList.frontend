@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import useTrendingMovie from "../hooks/api/useTrendingMovies";
-import MediaCard from "./MediaCard";
+import useTrendingMovie from "../../hooks/api/useTrendingMovies";
+import MediaCard from "../MediaCard";
 
 export default function TrendingList({ children }) {
   const [movieList, setMovieList] = useState([]);
@@ -15,22 +15,32 @@ export default function TrendingList({ children }) {
   }, []);
 
   return (
-    <>
+    <List>
       <Text>{children}</Text>
       <Container>
         {movieList.map((value, index) => (
           <MediaCard key={index} info={value} />
         ))}
       </Container>
-    </>
+    </List>
   );
 }
 
+const List = styled.div`
+  width: 100%;
+  max-width: 1440px;
+`;
+
 const Container = styled.div`
+  width: 100%;
   display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
 `;
 
 const Text = styled.div`
+  width: 100%;
+  text-align: start;
   font-size: 20px;
   font-weight: 700;
   margin: 0 0 15px 0;
