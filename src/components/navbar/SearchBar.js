@@ -1,30 +1,36 @@
 import styled from "styled-components";
 
 import { MdSearch } from "react-icons/md";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
-export default function SearchBar({ searchText, setSearchText }) {
+export default function SearchBar() {
+  const [searchText, setSearchText] = useState("");
+  const navigate = useNavigate();
+  const params = useParams();
+
+  useEffect(() => {
+    if (params?.title) {
+      setSearchText(params.title);
+    }
+  }, [params?.title]);
+
   function activeSearch(e) {
     e.preventDefault();
     setSearchText(e.target.value);
+    navigate(`/search/${e.target.value}`);
   }
 
   return (
     <Container>
       <MdSearch className="icon" />
-      <input
-        placeholder="Search"
-        type="text"
-        value={searchText}
-        onChange={activeSearch}
-      />
+      <input type="text" value={searchText} onChange={activeSearch}></input>
+      <Button>Search</Button>
     </Container>
   );
 }
 
 const Container = styled.div`
-  width: 100%;
-  max-width: 1440px;
-  margin: 20px 0 0 0;
   position: relative;
   .icon {
     position: absolute;
@@ -33,6 +39,7 @@ const Container = styled.div`
     font-size: 25px;
   }
   input {
+    width: 600px;
     background: rgb(251, 251, 251);
     border: none;
     border-radius: 6px;
@@ -49,4 +56,20 @@ const Container = styled.div`
       outline: 0;
     }
   }
+`;
+
+const Button = styled.div`
+  width: 80px;
+  height: 100%;
+  border-radius: 6px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d9e6ff;
+  background-color: #3577ff;
+  font-size: 17px;
+  cursor: pointer;
 `;

@@ -1,9 +1,13 @@
 import styled from "styled-components";
 
+import SearchBar from "./SearchBar";
+
 export default function Navbar() {
   return (
     <Container>
-      <Wrappler></Wrappler>
+      <Wrappler>
+        <SearchBar />
+      </Wrappler>
     </Container>
   );
 }
@@ -24,6 +28,8 @@ const Container = styled.div`
 const Wrappler = styled.div`
   align-items: center;
   display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100%;
   margin: 0 50px;
   max-width: 1050px;
