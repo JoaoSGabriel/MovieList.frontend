@@ -24,8 +24,12 @@ export default function SearchBar() {
   return (
     <Container>
       <MdSearch className="icon" />
-      <input type="text" value={searchText} onChange={activeSearch}></input>
-      <Button>Search</Button>
+      <input
+        placeholder="Search by title"
+        type="text"
+        value={searchText}
+        onChange={activeSearch}
+      />
     </Container>
   );
 }
@@ -56,20 +60,4 @@ const Container = styled.div`
       outline: 0;
     }
   }
-`;
-
-const Button = styled.div`
-  width: 80px;
-  height: 100%;
-  border-radius: 6px;
-  position: absolute;
-  right: 0;
-  top: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #d9e6ff;
-  background-color: #3577ff;
-  font-size: 17px;
-  cursor: pointer;
 `;

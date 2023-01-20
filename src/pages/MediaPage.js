@@ -3,10 +3,5 @@ import Navbar from "../components/navbar/index";
 
 export default function MediaPage() {
   const params = useParams();
-  return (
-    <>
-      <Navbar />
-      Você clicou no ID: {params.id}
-    </>
-  );
+  return <>Você clicou no ID: {params.id}</>;
 }
