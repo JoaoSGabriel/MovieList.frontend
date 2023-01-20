@@ -5,6 +5,7 @@ import SearchBar from "./SearchBar";
 import TrendingList from "./TrendingList";
 import RatedList from "./TopRatedList";
 import UpcomingList from "./UpcomingList";
+import SearchPage from "../searchPage";
 
 export default function HomePage() {
   const [searchText, setSearchText] = useState("");
@@ -13,7 +14,7 @@ export default function HomePage() {
     <Home>
       <SearchBar searchText={searchText} setSearchText={setSearchText} />
       {searchText !== "" ? (
-        <>pesquisar</>
+        <SearchPage searchText={searchText} />
       ) : (
         <>
           <TrendingList>Trending Now</TrendingList>

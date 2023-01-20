@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const List = styled.div`
   width: 100%;
   max-width: 1440px;
-  margin: 40px 0 20px 0;
+  margin: 40px 0 0 0;
 `;
 
 export const Container = styled.div`
