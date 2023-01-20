@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 import SearchBar from "./SearchBar";
@@ -6,12 +7,20 @@ import RatedList from "./TopRatedList";
 import UpcomingList from "./UpcomingList";
 
 export default function HomePage() {
+  const [searchText, setSearchText] = useState("");
+
   return (
     <Home>
-      <SearchBar></SearchBar>
-      <TrendingList>Trending Now</TrendingList>
-      <RatedList>All time Popular</RatedList>
-      <UpcomingList>Upcoming movies</UpcomingList>
+      <SearchBar searchText={searchText} setSearchText={setSearchText} />
+      {searchText !== "" ? (
+        <>pesquisar</>
+      ) : (
+        <>
+          <TrendingList>Trending Now</TrendingList>
+          <RatedList>All time Popular</RatedList>
+          <UpcomingList>Upcoming movies</UpcomingList>
+        </>
+      )}
     </Home>
   );
 }

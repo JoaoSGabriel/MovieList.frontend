@@ -17,9 +17,12 @@ export default function MediaCard({ info }) {
 }
 
 const Container = styled.div`
+  box-shadow: 0 14px 30px rgba(103, 132, 187, 0.15),
+    0 4px 4px rgba(103, 132, 187, 0.05);
   cursor: pointer;
   img {
     width: 250px;
     height: 375px;
+    border-radius: 4px;
   }
 `;
