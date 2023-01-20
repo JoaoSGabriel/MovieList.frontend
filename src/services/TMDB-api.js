@@ -17,3 +17,9 @@ export async function getUpcomingList() {
 
   return response.data;
 }
+
+export async function getSearchList(text) {
+  const response = await api.get(`/movies/search/${text}`);
+
+  return response.data;
+}

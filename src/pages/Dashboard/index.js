@@ -1,5 +1,5 @@
 import HomePage from "../../components/homePage";
-import Navbar from "./Navbar";
+import Navbar from "../../components/navbar/Navbar";
 
 export default function Dashboard() {
   return (
