@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
@@ -22,12 +23,12 @@ const Container = styled.div`
   cursor: pointer;
   background: none;
   img {
-    width: 200px;
-    height: 300px;
+    width: 210px;
+    height: 315px;
     border-radius: 4px;
   }
   h1 {
-    width: 200px;
+    width: 210px;
     color: rgb(116, 136, 153);
     font-size: 0.9rem;
     font-weight: 600;
