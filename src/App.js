@@ -4,7 +4,7 @@ import Navbar from "./components/navbar";
 
 import Dashboard from "./pages/Dashboard/Home";
 import Search from "./pages/Dashboard/Search";
-import MediaPage from "./pages/MediaPage";
+import MediaInfo from "./pages/Dashboard/MediaInfo";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
           <Route path="/" element={<Dashboard />} />
           <Route path="/search/" element={<Search />} />
           <Route path="/search/:title" element={<Search />} />
-          <Route path="/movie/:movieId/:movieName" element={<MediaPage />} />
+          <Route path="/movie/:movieId/:movieName" element={<MediaInfo />} />
         </Routes>
       </Router>
     </>
