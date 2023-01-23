@@ -22,8 +22,8 @@ const Container = styled.div`
   margin: 0 0 20px 0;
   cursor: pointer;
   img {
-    width: 250px;
-    height: 375px;
+    width: 200px;
+    height: auto;
     border-radius: 4px;
   }
 `;

@@ -11,7 +11,7 @@ export default function UpcomingList({ children }) {
   useEffect(() => {
     const promisse = getUpcoming();
     promisse.then((p) => {
-      if (p) setMovieList(p.results.slice(0, 5));
+      if (p) setMovieList(p.results.slice(0, 6));
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
