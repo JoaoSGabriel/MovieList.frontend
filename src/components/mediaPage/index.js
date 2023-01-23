@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import Home from "../HomeStyle";
 import useGetDetailsMovie from "../../hooks/api/useGetDetailsMovie";
+import MovieInfo from "./MovieInfo";
+import { ImHeart } from "react-icons/im";
 
 export default function MediaPage() {
   const [movieDetails, setMovieDetails] = useState([]);
@@ -36,11 +38,11 @@ export default function MediaPage() {
             <Details>
               <Banner>
                 <img src={moviePoster} alt="movie Poster" />
+                <LikeButton>
+                  <ImHeart />
+                </LikeButton>
               </Banner>
-              <Information>
-                <h1>{movieDetails.title}</h1>
-                <h2>{movieDetails.overview}</h2>
-              </Information>
+              <MovieInfo movieDetails={movieDetails} />
             </Details>
           </Home>
         </>
@@ -74,6 +76,7 @@ const Details = styled.div`
   justify-content: end;
   width: 100%;
   max-width: 1440px;
+  background-color: #fafafa;
 `;
 
 const Banner = styled.div`
@@ -89,23 +92,19 @@ const Banner = styled.div`
   }
 `;
 
-const Information = styled.div`
-  width: 1075px;
-  margin: 10px 0 0 30px;
-  h1 {
-    font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen,
-      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    font-size: 1.4rem;
-    font-weight: 400;
-    color: rgb(93, 114, 138);
-  }
-  h2 {
-    color: rgb(122, 133, 143);
-    font-size: 1rem;
-    line-height: 1.5;
-    margin: 0;
-    max-width: 900px;
-    padding: 15px 0;
-    transition: 0.2s;
-  }
+const LikeButton = styled.div`
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  top: 225px;
+  right: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(236, 41, 75);
+  border-radius: 5px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  display: flex;
+  font-size: 1.4rem;
 `;
