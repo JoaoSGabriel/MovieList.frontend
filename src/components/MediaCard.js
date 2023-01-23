@@ -12,18 +12,29 @@ export default function MediaCard({ info }) {
   return (
     <Container onClick={seeMore}>
       <img src={src} alt="loaded Banner" />
+      <h1>{info.title}</h1>
     </Container>
   );
 }
 
 const Container = styled.div`
-  box-shadow: 0 14px 30px rgba(103, 132, 187, 0.15),
-    0 4px 4px rgba(103, 132, 187, 0.05);
   margin: 0 0 20px 0;
   cursor: pointer;
+  background: none;
   img {
     width: 200px;
-    height: auto;
+    height: 300px;
     border-radius: 4px;
+  }
+  h1 {
+    width: 200px;
+    color: rgb(116, 136, 153);
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 21px;
+    margin-top: 10px;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
   }
 `;
