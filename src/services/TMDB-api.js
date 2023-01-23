@@ -23,3 +23,9 @@ export async function getSearchList(text) {
 
   return response.data;
 }
+
+export async function getMovieDetails(movieId) {
+  const response = await api.get(`/movies/details/${movieId}`);
+
+  return response.data;
+}
