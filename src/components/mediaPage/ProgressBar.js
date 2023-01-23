@@ -14,6 +14,7 @@ export default function ProgressBar({ completed }) {
 const Wrappler = styled.div`
   display: flex;
   align-items: center;
+  margin: 0 0 15px 0;
 `;
 
 const Container = styled.div`

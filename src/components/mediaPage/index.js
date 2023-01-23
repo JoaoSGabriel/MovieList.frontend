@@ -35,15 +35,17 @@ export default function MediaPage() {
             <Image imageUrl={movieBanner}></Image>
           </Background>
           <Home>
-            <Details>
-              <Banner>
-                <img src={moviePoster} alt="movie Poster" />
-                <LikeButton>
-                  <ImHeart />
-                </LikeButton>
-              </Banner>
-              <MovieInfo movieDetails={movieDetails} />
-            </Details>
+            <BackgroundColor>
+              <Details>
+                <Banner>
+                  <img src={moviePoster} alt="movie Poster" />
+                  <LikeButton>
+                    <ImHeart />
+                  </LikeButton>
+                </Banner>
+                <MovieInfo movieDetails={movieDetails} />
+              </Details>
+            </BackgroundColor>
           </Home>
         </>
       )}
@@ -71,12 +73,19 @@ const Image = styled.div`
   background: ${(props) => `url(${props.imageUrl})`};
 `;
 
+const BackgroundColor = styled.div`
+  width: 100%;
+  min-height: 290px;
+  display: flex;
+  justify-content: center;
+  background-color: #fafafa; ;
+`;
+
 const Details = styled.div`
   display: flex;
   justify-content: end;
   width: 100%;
   max-width: 1440px;
-  background-color: #fafafa;
 `;
 
 const Banner = styled.div`
@@ -84,8 +93,8 @@ const Banner = styled.div`
   box-shadow: 0 0 29px rgb(49 54 68 / 25%);
   position: relative;
   img {
-    width: 200px;
-    height: 300px;
+    width: 215px;
+    height: 322px;
     position: absolute;
     top: -100px;
     right: 0;
@@ -96,7 +105,7 @@ const LikeButton = styled.div`
   width: 35px;
   height: 35px;
   position: absolute;
-  top: 225px;
+  top: 240px;
   right: 0px;
   display: flex;
   justify-content: center;
@@ -106,5 +115,5 @@ const LikeButton = styled.div`
   color: rgb(255, 255, 255);
   cursor: pointer;
   display: flex;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 `;

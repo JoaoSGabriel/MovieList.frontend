@@ -9,7 +9,7 @@ export default function MovieInfo({ movieDetails }) {
       </h1>
       {movieDetails.tagline ? <h3>"{movieDetails.tagline}"</h3> : <></>}
       <h2>{movieDetails.overview}</h2>
-      <h2>IMDB: Pontuação</h2>
+      <h3>IMDB: Pontuação</h3>
       <ProgressBar completed={movieDetails.vote_average} />
     </Information>
   );
@@ -17,9 +17,8 @@ export default function MovieInfo({ movieDetails }) {
 
 const Information = styled.div`
   width: 1075px;
-  height: 260px;
+  min-height: 260px;
   margin: 10px 0 0 30px;
-
   h1 {
     font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen,
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
