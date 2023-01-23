@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import ProgressBar from "./ProgressBar";
 
 export default function MovieInfo({ movieDetails }) {
   return (
@@ -9,6 +10,7 @@ export default function MovieInfo({ movieDetails }) {
       {movieDetails.tagline ? <h3>"{movieDetails.tagline}"</h3> : <></>}
       <h2>{movieDetails.overview}</h2>
       <h2>IMDB: Pontuação</h2>
+      <ProgressBar completed={movieDetails.vote_average} />
     </Information>
   );
 }
@@ -22,7 +24,7 @@ const Information = styled.div`
     font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen,
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     font-size: 1.4rem;
-    font-weight: 400;
+    font-weight: 600;
     color: rgb(93, 114, 138);
   }
 
