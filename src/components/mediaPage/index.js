@@ -5,6 +5,8 @@ import Home from "../HomeStyle";
 import useGetDetailsMovie from "../../hooks/api/useGetDetailsMovie";
 import MovieInfo from "./MovieInfo";
 import { ImHeart } from "react-icons/im";
+import SideBarInfo from "./SIdeBarInfo";
+import CrewInfo from "./CrewInformation";
 
 export default function MediaPage() {
   const [movieDetails, setMovieDetails] = useState([]);
@@ -46,6 +48,10 @@ export default function MediaPage() {
                 <MovieInfo movieDetails={movieDetails} />
               </Details>
             </BackgroundColor>
+            <Details>
+              <SideBarInfo movieDetails={movieDetails} />
+              <CrewInfo movieDetails={movieDetails} />
+            </Details>
           </Home>
         </>
       )}
@@ -78,7 +84,7 @@ const BackgroundColor = styled.div`
   min-height: 290px;
   display: flex;
   justify-content: center;
-  background-color: #fafafa; ;
+  background-color: #fafafa;
 `;
 
 const Details = styled.div`
