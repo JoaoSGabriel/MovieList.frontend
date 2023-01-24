@@ -6,7 +6,7 @@ import useGetDetailsMovie from "../../hooks/api/useGetDetailsMovie";
 import MovieInfo from "./MovieInfo";
 import { ImHeart } from "react-icons/im";
 import SideBarInfo from "./SIdeBarInfo";
-import CrewInfo from "./CrewInformation";
+import MovieContent from "./MovieContent";
 
 export default function MediaPage() {
   const [movieDetails, setMovieDetails] = useState([]);
@@ -23,7 +23,6 @@ export default function MediaPage() {
         setMovieBanner("https://image.tmdb.org/t/p/w1280" + p.backdrop_path);
         setMoviePoster("https://image.tmdb.org/t/p/w1280" + p.poster_path);
       }
-      console.log(p);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -50,7 +49,7 @@ export default function MediaPage() {
             </BackgroundColor>
             <Details>
               <SideBarInfo movieDetails={movieDetails} />
-              <CrewInfo movieDetails={movieDetails} />
+              <MovieContent movieDetails={movieDetails} />
             </Details>
           </Home>
         </>

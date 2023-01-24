@@ -29,3 +29,9 @@ export async function getMovieDetails(movieId) {
 
   return response.data;
 }
+
+export async function getCollectionDetails(collectionId) {
+  const response = await api.get(`/movies/collections/${collectionId}`);
+
+  return response.data;
+}

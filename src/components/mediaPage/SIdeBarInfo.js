@@ -2,7 +2,9 @@ import styled from "styled-components";
 
 export default function SideBarInfo({ movieDetails }) {
   function convertDate(object) {
-    return object.split("-").reverse().join("/");
+    if (movieDetails?.release_date) {
+      return object.split("-").reverse().join("/");
+    }
   }
 
   function revenue(value) {

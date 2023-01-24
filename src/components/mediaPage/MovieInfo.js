@@ -4,9 +4,7 @@ import ProgressBar from "./ProgressBar";
 export default function MovieInfo({ movieDetails }) {
   return (
     <Information>
-      <h1>
-        {movieDetails.title} ({movieDetails.status})
-      </h1>
+      <h1>{movieDetails.title}</h1>
       {movieDetails.tagline ? <h3>"{movieDetails.tagline}"</h3> : <></>}
       <h2>{movieDetails.overview}</h2>
       <h3>IMDB: Pontuação</h3>
