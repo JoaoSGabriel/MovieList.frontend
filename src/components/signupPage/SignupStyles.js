@@ -17,6 +17,17 @@ export const Container = styled.div`
     color: rgb(92, 114, 138);
   }
 
+  h2 {
+    margin: 60px 0 0 0;
+    font-size: 0.9rem;
+    color: rgb(146, 153, 161);
+    cursor: pointer;
+
+    :hover {
+      color: rgb(61, 180, 242);
+    }
+  }
+
   input {
     background: rgba(237, 241, 245, 0.7);
     border-radius: 4px;
@@ -57,11 +68,3 @@ export const Container = styled.div`
     padding: 10px 30px;
   }
 `;
-
-/*
-transition: all 150ms ease-in-out;
-
-    :hover {
-      box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
-    }
-*/

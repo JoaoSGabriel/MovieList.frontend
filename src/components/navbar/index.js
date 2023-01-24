@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import AccountManage from "./AccountManage";
 import Logo from "./Logo";
 
 export default function Navbar() {
@@ -6,7 +7,7 @@ export default function Navbar() {
     <Container>
       <Wrappler>
         <Logo />
-        Account Manager
+        <AccountManage />
       </Wrappler>
     </Container>
   );

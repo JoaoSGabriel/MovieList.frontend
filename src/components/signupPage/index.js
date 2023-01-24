@@ -44,6 +44,7 @@ export default function Signup() {
           />
           <button>Criar</button>
         </form>
+        <h2>Já tem uma conta? Faça Login!</h2>
       </Container>
     </Home>
   );
