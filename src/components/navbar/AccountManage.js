@@ -30,6 +30,7 @@ const Login = styled.div`
   margin: 0 20px 0 0;
   display: flex;
   align-items: center;
+  transition: all 150ms ease-in-out;
   cursor: pointer;
 
   :hover {
