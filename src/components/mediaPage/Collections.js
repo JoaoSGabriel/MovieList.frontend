@@ -26,27 +26,33 @@ export default function Collections({ collectionDetails }) {
 
   return (
     <>
-      <h1>Relações</h1>
-      <Main>
-        {movieList.map((value, index) => (
-          <CollectionCard
-            key={index}
-            onClick={() => {
-              seeMore(value);
-            }}
-          >
-            <img
-              src={"https://image.tmdb.org/t/p/w500" + value.poster_path}
-              alt="poster"
-            />
-            <Info>
-              <h1>{value.title}</h1>
-              <h2>Data de lançamento:</h2>
-              <h2>{convertDate(value.release_date)}</h2>
-            </Info>
-          </CollectionCard>
-        ))}
-      </Main>
+      {collectionDetails?.id ? (
+        <>
+          <h1>Relações</h1>
+          <Main>
+            {movieList.map((value, index) => (
+              <CollectionCard
+                key={index}
+                onClick={() => {
+                  seeMore(value);
+                }}
+              >
+                <img
+                  src={"https://image.tmdb.org/t/p/w500" + value.poster_path}
+                  alt="poster"
+                />
+                <Info>
+                  <h1>{value.title}</h1>
+                  <h2>Data de lançamento:</h2>
+                  <h2>{convertDate(value.release_date)}</h2>
+                </Info>
+              </CollectionCard>
+            ))}
+          </Main>
+        </>
+      ) : (
+        <></>
+      )}
     </>
   );
 }

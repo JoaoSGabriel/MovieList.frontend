@@ -1,14 +1,11 @@
 import styled from "styled-components";
 import Logo from "./Logo";
 
-import SearchBar from "./SearchBar";
-
 export default function Navbar() {
   return (
     <Container>
       <Wrappler>
         <Logo />
-        <SearchBar />
         Account Manager
       </Wrappler>
     </Container>
