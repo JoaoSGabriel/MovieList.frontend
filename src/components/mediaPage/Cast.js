@@ -7,10 +7,17 @@ export default function Cast({ info }) {
       <Wrappler>
         {info.map((value, index) => (
           <CastCard>
-            <img
-              src={"https://image.tmdb.org/t/p/w500" + value.profile_path}
-              alt="poster"
-            />
+            {value.profile_path ? (
+              <img
+                src={"https://image.tmdb.org/t/p/w500" + value.profile_path}
+                alt="poster"
+              />
+            ) : (
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"
+                alt="no data"
+              />
+            )}
             <CastInfo>
               <h1>{value.name}</h1>
               <h1>"{value.character}"</h1>
@@ -43,4 +50,10 @@ const CastCard = styled.div`
 
 const CastInfo = styled.div`
   padding: 10px;
+
+  h1 {
+    color: rgb(146, 153, 161);
+    font-size: 1rem;
+    font-weight: 500;
+  }
 `;
