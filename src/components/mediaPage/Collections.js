@@ -18,7 +18,11 @@ export default function Collections({ collectionDetails }) {
   }, [collectionDetails]);
 
   function seeMore(value) {
-    navigate(`/movie/${value.id}/${value.title}`);
+    navigate(`/search/${value.title}`);
+  }
+
+  function convertDate(object) {
+    return object.split("-").reverse().join("/");
   }
 
   return (
@@ -36,7 +40,10 @@ export default function Collections({ collectionDetails }) {
               src={"https://image.tmdb.org/t/p/w500" + value.poster_path}
               alt="poster"
             />
-            <h1>{value.title}</h1>
+            <Info>
+              <h1>{value.title}</h1>
+              <h2>{convertDate(value.release_date)}</h2>
+            </Info>
           </CollectionCard>
         ))}
       </Main>
@@ -46,6 +53,7 @@ export default function Collections({ collectionDetails }) {
 
 const Main = styled.div`
   display: flex;
+  flex-wrap: wrap;
 `;
 
 const CollectionCard = styled.div`
@@ -53,10 +61,10 @@ const CollectionCard = styled.div`
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background: rgb(250, 250, 250);
   border-radius: 3px;
-  width: 330px;
+  width: 320px;
   display: flex;
   border-radius: 10px;
-  margin: 0 30px 0 0;
+  margin: 0 30px 30px 0;
   cursor: pointer;
 
   img {
@@ -64,11 +72,20 @@ const CollectionCard = styled.div`
     width: 100px;
     height: 150px;
   }
+`;
+
+const Info = styled.div`
+  padding: 10px 0 0 10px;
 
   h1 {
     color: rgb(92, 114, 138);
     font-size: 1rem;
     font-weight: 500;
-    padding: 10px 0 0 10px;
+  }
+
+  h2 {
+    color: rgb(146, 153, 161);
+    font-size: 0.9rem;
+    line-height: 1.3;
   }
 `;
