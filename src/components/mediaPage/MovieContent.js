@@ -27,9 +27,9 @@ export default function MovieContent({ movieDetails }) {
     <>
       <Wrappler>
         {movieDetails.belong_to_collection ? (
-          <></>
-        ) : (
           <Collections collectionDetails={movieDetails.belongs_to_collection} />
+        ) : (
+          <></>
         )}
         {cast !== [] ? <Cast info={cast} /> : <></>}
         {crew !== [] ? <Crew info={crew} /> : <></>}

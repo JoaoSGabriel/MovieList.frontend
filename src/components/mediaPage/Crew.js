@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export default function Crew({ info }) {
-  console.log(info);
   return (
     <>
       <h1>Elenco:</h1>
