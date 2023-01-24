@@ -20,6 +20,7 @@ export default function SearchPage() {
         if (p) setMovieList(p.results);
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params]);
 
   return (
