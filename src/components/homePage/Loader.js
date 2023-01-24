@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Radio } from "react-loader-spinner";
 
 export default function Loader() {
   const count = [1, 2, 3, 4, 5, 6];
@@ -7,15 +6,8 @@ export default function Loader() {
     <Wrappler>
       {count.map((index) => (
         <Container key={index}>
-          <Radio
-            visible={true}
-            height="315"
-            width="210"
-            ariaLabel="radio-loading"
-            wrapperStyle={{}}
-            wrapperClass="radio-wrapper"
-            colors={["#8D949E", "#8D949E", "#8D949E"]}
-          />
+          <div></div>
+          <p></p>
         </Container>
       ))}
     </Wrappler>
@@ -29,7 +21,32 @@ const Wrappler = styled.div`
 
 const Container = styled.div`
   margin: 0 0 20px 0;
-  width: 210px;
-  height: 315px;
-  border-radius: 4px;
+
+  @keyframes shine {
+    to {
+      background-position-x: -200%;
+    }
+  }
+
+  div {
+    width: 210px;
+    height: 315px;
+    border-radius: 4px;
+    background: #eee;
+    background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+    border-radius: 5px;
+    background-size: 200% 100%;
+    animation: 0.9s shine linear infinite;
+  }
+
+  p {
+    width: 210px;
+    height: 21px;
+    margin-top: 15px;
+    background: #eee;
+    background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+    border-radius: 5px;
+    background-size: 200% 100%;
+    animation: 1.5s shine linear infinite;
+  }
 `;
