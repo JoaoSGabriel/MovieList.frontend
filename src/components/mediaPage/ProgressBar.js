@@ -1,10 +1,16 @@
 import styled from "styled-components";
 
 export default function ProgressBar({ completed }) {
+  function seeValue() {
+    if (completed < 3) return "#FB1E2F";
+    if (completed < 6) return "#FFB20A";
+    return "#16d47b";
+  }
+
   return (
     <Wrappler>
       <Container>
-        <Filler value={completed}></Filler>
+        <Filler bckgColor={seeValue()} value={completed}></Filler>
       </Container>
       <Value>{completed}</Value>
     </Wrappler>
@@ -27,7 +33,7 @@ const Container = styled.div`
 const Filler = styled.div`
   height: 100%;
   width: ${(props) => `${props.value * 10}%`};
-  background-color: #16d47b;
+  background-color: ${(props) => `${props.bckgColor}`};
   border-radius: inherit;
   text-align: right;
 `;

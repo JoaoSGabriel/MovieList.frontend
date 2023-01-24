@@ -12,6 +12,8 @@ export default function SearchBar({ children }) {
   useEffect(() => {
     if (params?.title) {
       setSearchText(params.title);
+    } else {
+      setSearchText("");
     }
   }, [params?.title]);
 
