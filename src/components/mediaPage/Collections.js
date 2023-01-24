@@ -17,7 +17,7 @@ export default function Collections({ collectionDetails }) {
   }, [collectionDetails]);
 
   function seeMore(value) {
-    navigate(`/search/${value.title}`);
+    navigate(`/movie/${value.id}/${value.title}`);
   }
 
   function convertDate(object) {
@@ -31,12 +31,7 @@ export default function Collections({ collectionDetails }) {
           <h1>Relações</h1>
           <Main>
             {movieList.map((value, index) => (
-              <CollectionCard
-                key={index}
-                onClick={() => {
-                  seeMore(value);
-                }}
-              >
+              <CollectionCard key={index} onClick={() => seeMore(value)}>
                 <img
                   src={"https://image.tmdb.org/t/p/w500" + value.poster_path}
                   alt="poster"

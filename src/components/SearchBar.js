@@ -8,7 +8,6 @@ export default function SearchBar({ children }) {
   const [searchText, setSearchText] = useState("");
   const navigate = useNavigate();
   const params = useParams();
-  console.log(params);
 
   useEffect(() => {
     if (params?.title) {

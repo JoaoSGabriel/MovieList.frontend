@@ -19,14 +19,20 @@ export default function MediaPage() {
   useEffect(() => {
     const promisse = getDetails(params.movieId);
     promisse.then((p) => {
-      if (p) {
-        setMovieDetails(p);
+      setMovieDetails(p);
+
+      if (p?.backdrop_path) {
         setMovieBanner("https://image.tmdb.org/t/p/w1280" + p.backdrop_path);
-        setMoviePoster("https://image.tmdb.org/t/p/w1280" + p.poster_path);
+      } else {
+        setMovieBanner(
+          "https://img.freepik.com/free-photo/gray-wall-empty-room-with-concrete-floor_53876-88447.jpg?w=2000"
+        );
       }
+
+      setMoviePoster("https://image.tmdb.org/t/p/w1280" + p.poster_path);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [params]);
   return (
     <>
       {detailsLoading ? (
