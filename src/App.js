@@ -6,6 +6,7 @@ import Home from "./pages/Dashboard/Home";
 import Search from "./pages/Dashboard/Search";
 import MediaInfo from "./pages/Dashboard/MediaInfo";
 import SearchBar from "./components/SearchBar";
+import SignUp from "./pages/Enroll/SignUp";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
+          <Route path="/signup" element={<SignUp />} />
           <Route
             path="/"
             element={
