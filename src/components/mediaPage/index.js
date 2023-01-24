@@ -7,7 +7,7 @@ import MovieInfo from "./MovieInfo";
 import { ImHeart } from "react-icons/im";
 import SideBarInfo from "./SIdeBarInfo";
 import MovieContent from "./MovieContent";
-import { Circles } from "react-loader-spinner";
+import LoaderScreen from "../LoaderScreen";
 
 export default function MediaPage() {
   const [movieDetails, setMovieDetails] = useState([]);
@@ -30,17 +30,7 @@ export default function MediaPage() {
   return (
     <>
       {detailsLoading ? (
-        <Screen>
-          <Circles
-            height="200"
-            width="200"
-            color="#2B2D42"
-            ariaLabel="circles-loading"
-            wrapperStyle={{}}
-            wrapperClass=""
-            visible={true}
-          />
-        </Screen>
+        <LoaderScreen />
       ) : (
         <>
           <Background>
@@ -68,14 +58,6 @@ export default function MediaPage() {
     </>
   );
 }
-
-const Screen = styled.div`
-  width: 100vw;
-  height: calc(100vh - 75px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
 
 const Background = styled.div`
   width: 100%;

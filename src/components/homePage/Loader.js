@@ -32,7 +32,7 @@ const Container = styled.div`
     width: 210px;
     height: 315px;
     border-radius: 4px;
-    background: #eee;
+    background: #8d949e;
     background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
     border-radius: 5px;
     background-size: 200% 100%;
@@ -43,7 +43,7 @@ const Container = styled.div`
     width: 210px;
     height: 21px;
     margin-top: 15px;
-    background: #eee;
+    background: #8d949e;
     background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
     border-radius: 5px;
     background-size: 200% 100%;
