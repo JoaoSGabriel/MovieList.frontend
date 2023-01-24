@@ -3,10 +3,11 @@ import useUpcomingMovie from "../../hooks/api/useUpcomingMovies";
 
 import MediaCard from "../MediaCard";
 import { Container, List, Text } from "./ListStyle";
+import Loader from "./Loader";
 
 export default function UpcomingList({ children }) {
   const [movieList, setMovieList] = useState([]);
-  const { getUpcoming } = useUpcomingMovie();
+  const { getUpcoming, upcomingLoading } = useUpcomingMovie();
 
   useEffect(() => {
     const promisse = getUpcoming();
@@ -19,11 +20,15 @@ export default function UpcomingList({ children }) {
   return (
     <List>
       <Text>{children}</Text>
-      <Container>
-        {movieList.map((value, index) => (
-          <MediaCard key={index} info={value} />
-        ))}
-      </Container>
+      {upcomingLoading ? (
+        <Loader />
+      ) : (
+        <Container>
+          {movieList.map((value, index) => (
+            <MediaCard key={index} info={value} />
+          ))}
+        </Container>
+      )}
     </List>
   );
 }

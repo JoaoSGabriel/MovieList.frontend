@@ -3,10 +3,11 @@ import useRatedMovie from "../../hooks/api/useRatedMovies";
 
 import MediaCard from "../MediaCard";
 import { Container, List, Text } from "./ListStyle";
+import Loader from "./Loader";
 
 export default function RatedList({ children }) {
   const [movieList, setMovieList] = useState([]);
-  const { getRated } = useRatedMovie();
+  const { getRated, ratedLoading } = useRatedMovie();
 
   useEffect(() => {
     const promisse = getRated();
@@ -19,11 +20,15 @@ export default function RatedList({ children }) {
   return (
     <List>
       <Text>{children}</Text>
-      <Container>
-        {movieList.map((value, index) => (
-          <MediaCard key={index} info={value} />
-        ))}
-      </Container>
+      {ratedLoading ? (
+        <Loader />
+      ) : (
+        <Container>
+          {movieList.map((value, index) => (
+            <MediaCard key={index} info={value} />
+          ))}
+        </Container>
+      )}
     </List>
   );
 }

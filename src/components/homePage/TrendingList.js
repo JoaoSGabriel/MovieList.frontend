@@ -3,10 +3,11 @@ import useTrendingMovie from "../../hooks/api/useTrendingMovies";
 
 import MediaCard from "../MediaCard";
 import { Container, List, Text } from "./ListStyle";
+import Loader from "./Loader";
 
 export default function TrendingList({ children }) {
   const [movieList, setMovieList] = useState([]);
-  const { getTrending } = useTrendingMovie();
+  const { getTrending, trendingLoading } = useTrendingMovie();
 
   useEffect(() => {
     const promisse = getTrending();
@@ -19,11 +20,15 @@ export default function TrendingList({ children }) {
   return (
     <List>
       <Text>{children}</Text>
-      <Container>
-        {movieList.map((value, index) => (
-          <MediaCard key={index} info={value} />
-        ))}
-      </Container>
+      {trendingLoading ? (
+        <Loader />
+      ) : (
+        <Container>
+          {movieList.map((value, index) => (
+            <MediaCard key={index} info={value} />
+          ))}
+        </Container>
+      )}
     </List>
   );
 }
