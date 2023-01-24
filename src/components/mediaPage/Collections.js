@@ -12,7 +12,6 @@ export default function Collections({ collectionDetails }) {
       const promisse = getCollectionDetails(collectionDetails.id);
       promisse.then((p) => {
         if (p) setMovieList(p.parts);
-        console.log(p);
       });
     }
   }, [collectionDetails]);
@@ -42,6 +41,7 @@ export default function Collections({ collectionDetails }) {
             />
             <Info>
               <h1>{value.title}</h1>
+              <h2>Data de lançamento:</h2>
               <h2>{convertDate(value.release_date)}</h2>
             </Info>
           </CollectionCard>

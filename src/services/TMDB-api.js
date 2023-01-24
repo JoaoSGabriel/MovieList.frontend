@@ -35,3 +35,9 @@ export async function getCollectionDetails(collectionId) {
 
   return response.data;
 }
+
+export async function getmMovieCredits(movieId) {
+  const response = await api.get(`/movies/credits/${movieId}`);
+
+  return response.data;
+}

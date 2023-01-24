@@ -1,7 +1,27 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+import useGetMovieCredits from "../../hooks/api/useGetMovieCredits";
+import Cast from "./Cast";
 import Collections from "./Collections";
+import Crew from "./Crew";
 
 export default function MovieContent({ movieDetails }) {
+  const { getCredits } = useGetMovieCredits();
+  const [cast, setCast] = useState([]);
+  const [crew, setCrew] = useState([]);
+
+  useEffect(() => {
+    if (movieDetails.id) {
+      const promisse = getCredits(movieDetails.id);
+      promisse.then((p) => {
+        if (p) {
+          setCast(p.cast);
+          setCrew(p.crew);
+        }
+      });
+    }
+  }, [movieDetails]);
+
   return (
     <>
       <Wrappler>
@@ -10,6 +30,8 @@ export default function MovieContent({ movieDetails }) {
         ) : (
           <Collections collectionDetails={movieDetails.belongs_to_collection} />
         )}
+        {cast !== [] ? <Cast info={cast} /> : <></>}
+        {crew !== [] ? <Crew info={crew} /> : <></>}
       </Wrappler>
     </>
   );
