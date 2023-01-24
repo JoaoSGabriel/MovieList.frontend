@@ -2,7 +2,13 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 export default function MediaCard({ info }) {
-  const src = `https://image.tmdb.org/t/p/w500/${info.poster_path}`;
+  function contentImage() {
+    if (info.poster_path) {
+      return `https://image.tmdb.org/t/p/w500/${info.poster_path}`;
+    }
+
+    return "https://t3.ftcdn.net/jpg/04/34/72/82/360_F_434728286_OWQQvAFoXZLdGHlObozsolNeuSxhpr84.jpg";
+  }
   const navigate = useNavigate();
 
   function seeMore() {
@@ -11,7 +17,7 @@ export default function MediaCard({ info }) {
 
   return (
     <Container onClick={seeMore}>
-      <img src={src} alt="loaded Banner" />
+      <img src={contentImage()} alt="loaded Banner" />
       <h1>{info.title}</h1>
     </Container>
   );

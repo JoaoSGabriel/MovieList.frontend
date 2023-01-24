@@ -20,6 +20,7 @@ export default function MovieContent({ movieDetails }) {
         }
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movieDetails]);
 
   return (

@@ -54,6 +54,7 @@ export default function SideBarInfo({ movieDetails }) {
 
 const Wrappler = styled.div`
   width: 215px;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   background-color: #fafafa;
