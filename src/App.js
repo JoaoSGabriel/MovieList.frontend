@@ -2,9 +2,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import Navbar from "./components/navbar";
 
-import Dashboard from "./pages/Dashboard/Home";
+import Home from "./pages/Dashboard/Home";
 import Search from "./pages/Dashboard/Search";
 import MediaInfo from "./pages/Dashboard/MediaInfo";
+import SearchBar from "./components/SearchBar";
 
 function App() {
   return (
@@ -13,9 +14,30 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/search/" element={<Search />} />
-          <Route path="/search/:title" element={<Search />} />
+          <Route
+            path="/"
+            element={
+              <SearchBar>
+                <Home />
+              </SearchBar>
+            }
+          />
+          <Route
+            path="/search/"
+            element={
+              <SearchBar>
+                <Search />
+              </SearchBar>
+            }
+          />
+          <Route
+            path="/search/:title"
+            element={
+              <SearchBar>
+                <Search />
+              </SearchBar>
+            }
+          />
           <Route path="/movie/:movieId/:movieName" element={<MediaInfo />} />
         </Routes>
       </Router>

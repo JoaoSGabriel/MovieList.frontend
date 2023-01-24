@@ -4,10 +4,11 @@ import { MdSearch } from "react-icons/md";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-export default function SearchBar() {
+export default function SearchBar({ children }) {
   const [searchText, setSearchText] = useState("");
   const navigate = useNavigate();
   const params = useParams();
+  console.log(params);
 
   useEffect(() => {
     if (params?.title) {
@@ -22,20 +23,25 @@ export default function SearchBar() {
   }
 
   return (
-    <Container>
-      <MdSearch className="icon" />
-      <input
-        placeholder="Search by title"
-        type="text"
-        value={searchText}
-        onChange={activeSearch}
-      />
-    </Container>
+    <>
+      <Container>
+        <MdSearch className="icon" />
+        <input
+          placeholder="Search by title"
+          type="text"
+          value={searchText}
+          onChange={activeSearch}
+        />
+      </Container>
+      {children}
+    </>
   );
 }
 
 const Container = styled.div`
   position: relative;
+  width: 1440px;
+  margin: 30px auto 0 auto;
   .icon {
     position: absolute;
     left: 10px;
