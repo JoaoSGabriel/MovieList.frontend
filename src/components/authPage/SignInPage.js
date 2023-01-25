@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+
+import UserContext from "../contexts/UserContext";
 
 import useSignIn from "../../hooks/authentication/useSignIn";
 
@@ -12,8 +14,9 @@ export default function Signin() {
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
+  const { setUserData } = useContext(UserContext);
 
-  const { loadingSignIn, signIn } = useSignIn();
+  const { loadingSignIn, signInError, signIn } = useSignIn();
 
   function seeCreateAccount() {
     navigate("/signup");
@@ -21,6 +24,16 @@ export default function Signin() {
 
   async function login(e) {
     e.preventDefault();
+
+    try {
+      const userData = await signIn(email, password);
+      if (signInError) throw signInError;
+      setUserData(userData);
+      toast("Login realizado com sucesso!");
+      navigate("/");
+    } catch (err) {
+      toast("Não foi possível fazer o login!");
+    }
   }
 
   return (

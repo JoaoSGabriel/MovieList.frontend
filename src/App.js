@@ -8,43 +8,46 @@ import MediaInfo from "./pages/Dashboard/MediaInfo";
 import SearchBar from "./components/SearchBar";
 import SignUp from "./pages/Enroll/SignUp";
 import SignIn from "./pages/Enroll/SignIn";
+import { UserProvider } from "./components/contexts/UserContext";
 
 function App() {
   return (
     <>
       <ToastContainer />
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/sign-in" element={<SignIn />} />
-          <Route
-            path="/"
-            element={
-              <SearchBar>
-                <Home />
-              </SearchBar>
-            }
-          />
-          <Route
-            path="/search/"
-            element={
-              <SearchBar>
-                <Search />
-              </SearchBar>
-            }
-          />
-          <Route
-            path="/search/:title"
-            element={
-              <SearchBar>
-                <Search />
-              </SearchBar>
-            }
-          />
-          <Route path="/movie/:movieId/:movieName" element={<MediaInfo />} />
-        </Routes>
-      </Router>
+      <UserProvider>
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/sign-in" element={<SignIn />} />
+            <Route
+              path="/"
+              element={
+                <SearchBar>
+                  <Home />
+                </SearchBar>
+              }
+            />
+            <Route
+              path="/search/"
+              element={
+                <SearchBar>
+                  <Search />
+                </SearchBar>
+              }
+            />
+            <Route
+              path="/search/:title"
+              element={
+                <SearchBar>
+                  <Search />
+                </SearchBar>
+              }
+            />
+            <Route path="/movie/:movieId/:movieName" element={<MediaInfo />} />
+          </Routes>
+        </Router>
+      </UserProvider>
     </>
   );
 }
