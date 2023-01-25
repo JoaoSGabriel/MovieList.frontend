@@ -7,6 +7,7 @@ import Search from "./pages/Dashboard/Search";
 import MediaInfo from "./pages/Dashboard/MediaInfo";
 import SearchBar from "./components/SearchBar";
 import SignUp from "./pages/Enroll/SignUp";
+import SignIn from "./pages/Enroll/SignIn";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/sign-in" element={<SignIn />} />
           <Route
             path="/"
             element={

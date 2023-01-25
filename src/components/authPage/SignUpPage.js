@@ -16,6 +16,10 @@ export default function Signup() {
 
   const { loadingSignUp, signUp } = useSignUp();
 
+  function seeLogin() {
+    navigate("/sign-in");
+  }
+
   async function createAccount(e) {
     e.preventDefault();
 
@@ -58,7 +62,7 @@ export default function Signup() {
           />
           <button disabled={loadingSignUp}>Criar</button>
         </form>
-        <h2>Já tem uma conta? Faça Login!</h2>
+        <h2 onClick={seeLogin}>Já tem uma conta? Faça Login!</h2>
       </Container>
     </Home>
   );
