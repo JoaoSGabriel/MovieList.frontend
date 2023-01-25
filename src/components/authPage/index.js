@@ -5,11 +5,10 @@ import { toast } from "react-toastify";
 import useSignUp from "../../hooks/authentication/useSignUp";
 
 import Home from "../HomeStyle";
-import { Container } from "./SignupStyles";
+import { Container } from "./AuthStyles";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
 
@@ -46,12 +45,6 @@ export default function Signup() {
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
-            placeholder="Nome de usuário"
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <input
             placeholder="Senha"
             type="password"
             value={password}
@@ -63,7 +56,7 @@ export default function Signup() {
             value={rePassword}
             onChange={(e) => setRePassword(e.target.value)}
           />
-          <button>Criar</button>
+          <button disabled={loadingSignUp}>Criar</button>
         </form>
         <h2>Já tem uma conta? Faça Login!</h2>
       </Container>
