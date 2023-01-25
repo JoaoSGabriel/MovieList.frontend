@@ -1,4 +1,8 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+
+import useSignUp from "../../hooks/authentication/useSignUp";
 
 import Home from "../HomeStyle";
 import { Container } from "./SignupStyles";
@@ -9,8 +13,25 @@ export default function Signup() {
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
 
-  function createAccount(e) {
+  const navigate = useNavigate();
+
+  const { loadingSignUp, signUp } = useSignUp();
+
+  async function createAccount(e) {
     e.preventDefault();
+
+    if (password !== rePassword) {
+      toast("As senhas devem ser iguais!");
+    } else {
+      try {
+        const { signUpError } = await signUp(email, password);
+        if (signUpError) throw signUpError;
+        toast("Inscrito com sucesso! Por favor, faça login.");
+        navigate("/sign-in");
+      } catch (error) {
+        toast("Não foi possível fazer o cadastro!");
+      }
+    }
   }
 
   return (
