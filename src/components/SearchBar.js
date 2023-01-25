@@ -25,21 +25,21 @@ export default function SearchBar({ children }) {
 
   return (
     <>
-      <Container>
+      <MainSearch>
         <MdSearch className="icon" />
         <input
-          placeholder="Search by title"
+          placeholder="Pesquisar"
           type="text"
           value={searchText}
           onChange={activeSearch}
         />
-      </Container>
+      </MainSearch>
       {children}
     </>
   );
 }
 
-const Container = styled.div`
+const MainSearch = styled.div`
   position: relative;
   width: 1440px;
   margin: 30px auto 0 auto;
