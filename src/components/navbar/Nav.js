@@ -1,11 +1,16 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
+import useToken from "../../hooks/useToken";
+
 export default function Nav() {
+  const token = useToken();
+
   const navigate = useNavigate();
 
   return (
     <Container>
+      {token ? <div>Perfil</div> : <></>}
       <div
         onClick={() => {
           navigate("/search/a");

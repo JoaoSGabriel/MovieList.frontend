@@ -1,15 +1,18 @@
 import styled from "styled-components";
+import useToken from "../../hooks/useToken";
 import AccountManage from "./AccountManage";
 import Logo from "./Logo";
 import Nav from "./Nav";
 
 export default function Navbar() {
+  const token = useToken();
+
   return (
     <Container>
       <Wrappler>
         <Logo />
         <Nav />
-        <AccountManage />
+        {token ? <>Profile</> : <AccountManage />}
       </Wrappler>
     </Container>
   );

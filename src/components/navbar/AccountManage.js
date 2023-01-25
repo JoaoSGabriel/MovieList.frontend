@@ -6,7 +6,13 @@ export default function AccountManage() {
 
   return (
     <Container>
-      <Login>Entrar</Login>
+      <Login
+        onClick={() => {
+          navigate("/sign-in");
+        }}
+      >
+        Entrar
+      </Login>
       <SignupButton
         onClick={() => {
           navigate("/signup");
