@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import useGetMovieCredits from "../../hooks/api/useGetMovieCredits";
+import LoaderDiv from "../LoaderDiv";
 import Cast from "./Cast";
 import Collections from "./Collections";
 import Crew from "./Crew";
 
 export default function MovieContent({ movieDetails }) {
-  const { getCredits } = useGetMovieCredits();
+  const { getCredits, creditsLoading } = useGetMovieCredits();
   const [cast, setCast] = useState([]);
   const [crew, setCrew] = useState([]);
 
@@ -27,8 +28,14 @@ export default function MovieContent({ movieDetails }) {
     <>
       <Wrappler>
         <Collections collectionDetails={movieDetails.belongs_to_collection} />
-        {cast !== [] ? <Cast info={cast} /> : <></>}
-        {crew !== [] ? <Crew info={crew} /> : <></>}
+        {creditsLoading ? (
+          <LoaderDiv />
+        ) : (
+          <>
+            <Cast info={cast} />
+            <Crew info={crew} />
+          </>
+        )}
       </Wrappler>
     </>
   );

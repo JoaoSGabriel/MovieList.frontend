@@ -3,7 +3,7 @@ import styled from "styled-components";
 export default function Crew({ info }) {
   return (
     <>
-      <h1>Elenco:</h1>
+      <h1>Equipe Técnica:</h1>
       <Wrappler>
         {info.map((value, index) => (
           <CrewCard>
