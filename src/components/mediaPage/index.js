@@ -8,6 +8,7 @@ import { ImHeart } from "react-icons/im";
 import SideBarInfo from "./SIdeBarInfo";
 import MovieContent from "./movieContent";
 import LoaderScreen from "../LoaderScreen";
+import ListButton from "./ListButton";
 
 export default function MediaPage() {
   const [movieDetails, setMovieDetails] = useState([]);
@@ -52,6 +53,7 @@ export default function MediaPage() {
               <Details>
                 <Banner>
                   <img src={moviePoster} alt="movie Poster" />
+                  <ListButton />
                   <LikeButton>
                     <ImHeart />
                   </LikeButton>
@@ -110,6 +112,7 @@ const Banner = styled.div`
   border-radius: 2px;
   box-shadow: 0 0 29px rgb(49 54 68 / 25%);
   position: relative;
+
   img {
     width: 215px;
     height: 322px;
