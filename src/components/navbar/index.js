@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import useToken from "../../hooks/useToken";
 import AccountManage from "./AccountManage";
+import LoginManage from "./LoginManage";
 import Logo from "./Logo";
 import Nav from "./Nav";
 
@@ -12,7 +13,7 @@ export default function Navbar() {
       <Wrappler>
         <Logo />
         <Nav />
-        {token ? <>Profile</> : <AccountManage />}
+        {token ? <LoginManage /> : <AccountManage />}
       </Wrappler>
     </Container>
   );
