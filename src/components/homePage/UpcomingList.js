@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useUpcomingMovie from "../../hooks/api/useUpcomingMovies";
+import useUpcomingMovie from "../../hooks/apiUtils/useUpcomingMovies";
 
 import MediaCard from "../MediaCard";
 import { Container, List, Text } from "./ListStyle";

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useRatedMovie from "../../hooks/api/useRatedMovies";
+import useRatedMovie from "../../hooks/apiUtils/useRatedMovies";
 
 import MediaCard from "../MediaCard";
 import { Container, List, Text } from "./ListStyle";

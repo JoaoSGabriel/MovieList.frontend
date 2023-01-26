@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useTrendingMovie from "../../hooks/api/useTrendingMovies";
+import useTrendingMovie from "../../hooks/apiUtils/useTrendingMovies";
 
 import MediaCard from "../MediaCard";
 import { Container, List, Text } from "./ListStyle";
