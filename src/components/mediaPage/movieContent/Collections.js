@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { getCollectionDetails } from "../../services/TMDB-api";
+import { getCollectionDetails } from "../../../services/TMDB-api";
 
 export default function Collections({ collectionDetails }) {
   const [movieList, setMovieList] = useState([]);

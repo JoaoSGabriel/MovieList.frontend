@@ -3,10 +3,10 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import Home from "../HomeStyle";
 import useGetDetailsMovie from "../../hooks/api/useGetDetailsMovie";
-import MovieInfo from "./MovieInfo";
+import MovieInfo from "./movieInfo/index";
 import { ImHeart } from "react-icons/im";
 import SideBarInfo from "./SIdeBarInfo";
-import MovieContent from "./MovieContent";
+import MovieContent from "./movieContent";
 import LoaderScreen from "../LoaderScreen";
 
 export default function MediaPage() {

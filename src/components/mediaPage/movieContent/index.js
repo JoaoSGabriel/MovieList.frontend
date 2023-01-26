@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import useGetMovieCredits from "../../hooks/api/useGetMovieCredits";
-import LoaderDiv from "../LoaderDiv";
+import useGetMovieCredits from "../../../hooks/api/useGetMovieCredits";
+import LoaderDiv from "../../LoaderDiv";
 import Cast from "./Cast";
 import Collections from "./Collections";
 import Crew from "./Crew";
