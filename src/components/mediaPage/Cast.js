@@ -1,12 +1,35 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 export default function Cast({ info }) {
+  const onlySix = info.slice(0, 6);
+
+  const [render, setRender] = useState(onlySix);
+  const [isActive, setIsActive] = useState(false);
+
+  function seeInfo() {
+    setRender(info);
+    setIsActive(true);
+  }
+
+  function hiddenInfo() {
+    setRender(onlySix);
+    setIsActive(false);
+  }
+
   return (
     <>
-      <h1>Elenco:</h1>
+      <Header>
+        <h1>Elenco:</h1>
+        {isActive ? (
+          <span onClick={hiddenInfo}>Esconder</span>
+        ) : (
+          <span onClick={seeInfo}>Ver todos</span>
+        )}
+      </Header>
       <Wrappler>
-        {info.map((value, index) => (
-          <CastCard>
+        {render.map((value, index) => (
+          <CastCard key={index}>
             {value.profile_path ? (
               <img
                 src={"https://image.tmdb.org/t/p/w500" + value.profile_path}
@@ -20,7 +43,7 @@ export default function Cast({ info }) {
             )}
             <CastInfo>
               <h1>{value.name}</h1>
-              <h1>"{value.character}"</h1>
+              <h2>"{value.character}"</h2>
             </CastInfo>
           </CastCard>
         ))}
@@ -29,31 +52,52 @@ export default function Cast({ info }) {
   );
 }
 
+const Header = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  span {
+    color: rgb(92, 114, 138);
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0 55px 10px 0;
+    cursor: pointer;
+
+    :hover {
+      color: rgb(61, 180, 242);
+    }
+  }
+`;
+
 const Wrappler = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
 `;
 
 const CastCard = styled.div`
-  width: 330px;
+  width: 320px;
   height: auto;
   background-color: #fafafa;
-  margin: 0 0 30px 0;
+  margin: 0 30px 30px 0;
   display: flex;
 
   img {
     width: 100px;
+    border-radius: 5px;
   }
 `;
 
 const CastInfo = styled.div`
   padding: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgb(146, 153, 161);
 
-  h1 {
+  h2 {
+    margin: 0 0 10px 0;
     color: rgb(146, 153, 161);
-    font-size: 1rem;
-    font-weight: 500;
   }
 `;

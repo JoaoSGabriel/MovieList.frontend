@@ -18,21 +18,19 @@ export default function SideBarInfo({ movieDetails }) {
 
   function genres(object) {
     if (movieDetails?.genres) {
-      return object.map((value) => <h2>{value.name}</h2>);
+      return object.map((value, index) => <h2 key={index}>{value.name}</h2>);
     }
   }
 
   function production(object) {
     if (movieDetails?.production_companies) {
-      return object.map((value) => <h2>{value.name}</h2>);
+      return object.map((value, index) => <h2 key={index}>{value.name}</h2>);
     }
   }
 
   return (
     <>
       <Wrappler>
-        <h1>Popularidade</h1>
-        <h2>{movieDetails.popularity}</h2>
         <h1>Status</h1>
         <h2>{movieDetails.status}</h2>
         <h1>Data de lançamento</h1>

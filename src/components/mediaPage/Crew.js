@@ -1,11 +1,34 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 export default function Crew({ info }) {
+  const onlySix = info.slice(0, 6);
+
+  const [render, setRender] = useState(onlySix);
+  const [isActive, setIsActive] = useState(false);
+
+  function seeInfo() {
+    setRender(info);
+    setIsActive(true);
+  }
+
+  function hiddenInfo() {
+    setRender(onlySix);
+    setIsActive(false);
+  }
+
   return (
     <>
-      <h1>Equipe Técnica:</h1>
+      <Header>
+        <h1>Equipe Técnica:</h1>
+        {isActive ? (
+          <span onClick={hiddenInfo}>Esconder</span>
+        ) : (
+          <span onClick={seeInfo}>Ver todos</span>
+        )}
+      </Header>
       <Wrappler>
-        {info.map((value, index) => (
+        {render.map((value, index) => (
           <CrewCard>
             {value.profile_path ? (
               <img
@@ -20,8 +43,8 @@ export default function Crew({ info }) {
             )}
             <CrewInfo>
               <h1>{value.name}</h1>
-              <h1>Departamento: {value.department}</h1>
-              <h1>Emprego: {value.job}</h1>
+              <h2>Departamento: {value.department}</h2>
+              <h2>Emprego: {value.job}</h2>
             </CrewInfo>
           </CrewCard>
         ))}
@@ -30,18 +53,36 @@ export default function Crew({ info }) {
   );
 }
 
+const Header = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  span {
+    color: rgb(92, 114, 138);
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0 55px 10px 0;
+    cursor: pointer;
+
+    :hover {
+      color: rgb(61, 180, 242);
+    }
+  }
+`;
+
 const Wrappler = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
 `;
 
 const CrewCard = styled.div`
-  width: 330px;
+  width: 320px;
   height: auto;
   background-color: #fafafa;
-  margin: 0 0 30px 0;
+  margin: 0 30px 30px 0;
   display: flex;
 
   img {
@@ -51,10 +92,12 @@ const CrewCard = styled.div`
 
 const CrewInfo = styled.div`
   padding: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgb(146, 153, 161);
 
-  h1 {
+  h2 {
+    margin: 0 0 10px 0;
     color: rgb(146, 153, 161);
-    font-size: 1rem;
-    font-weight: 500;
   }
 `;
