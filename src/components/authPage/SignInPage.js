@@ -27,10 +27,13 @@ export default function Signin() {
 
     try {
       const userData = await signIn(email, password);
-      if (signInError) throw signInError;
-      setUserData(userData);
-      toast("Login realizado com sucesso!");
-      navigate("/");
+      if (userData?.token) {
+        setUserData(userData);
+        toast("Login realizado com sucesso!");
+        navigate("/");
+      } else {
+        throw signInError;
+      }
     } catch (err) {
       toast("Não foi possível fazer o login!");
     }
