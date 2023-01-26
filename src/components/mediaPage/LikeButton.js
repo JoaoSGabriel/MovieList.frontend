@@ -1,13 +1,34 @@
 import { ImHeart } from "react-icons/im";
+import { toast } from "react-toastify";
 import styled from "styled-components";
 
+import useMovieFavorit from "../../hooks/API/useMovieFavorit";
+
 export default function LikeButton({ movieDetails }) {
+  const { postFavorit } = useMovieFavorit();
+
   function setMovieAsFavorit() {
+    let src;
+    if (movieDetails?.poster_path) {
+      src = `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`;
+    } else {
+      src =
+        "https://t3.ftcdn.net/jpg/04/34/72/82/360_F_434728286_OWQQvAFoXZLdGHlObozsolNeuSxhpr84.jpg";
+    }
+
     const body = {
       tmdbTitle: movieDetails.title,
       tmdbMovieId: movieDetails.id,
-      tmdbPoster_path: movieDetails.poster_path,
+      tmdbPoster_path: src,
     };
+
+    try {
+      const { favoritError } = postFavorit(body);
+      if (favoritError) throw favoritError;
+      toast("Filme adicionado aos favoritos");
+    } catch (error) {
+      toast("Ops, algo deu errado com sua requisição");
+    }
   }
 
   return (

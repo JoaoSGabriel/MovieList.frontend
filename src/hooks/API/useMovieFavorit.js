@@ -3,7 +3,7 @@ import useToken from "../useToken";
 
 import * as listAPI from "../../services/Lists";
 
-export default function usePayment() {
+export default function useMovieFavorit() {
   const token = useToken();
 
   const {
