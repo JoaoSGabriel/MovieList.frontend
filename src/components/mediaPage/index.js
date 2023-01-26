@@ -16,13 +16,18 @@ export default function MediaPage() {
   const params = useParams();
   const { detailsLoading, getDetails } = useGetDetailsMovie();
 
+  //url('/t/p/w1920_and_h800_multi_faces/5kAGbi9MFAobQTVfK4kWPnIfnP0.jpg')
+
   useEffect(() => {
     const promisse = getDetails(params.movieId);
     promisse.then((p) => {
       setMovieDetails(p);
 
       if (p?.backdrop_path) {
-        setMovieBanner("https://image.tmdb.org/t/p/w1280" + p.backdrop_path);
+        setMovieBanner(
+          "https://image.tmdb.org/t/p/w1920_and_h800_multi_faces" +
+            p.backdrop_path
+        );
       } else {
         setMovieBanner(
           "https://img.freepik.com/free-photo/gray-wall-empty-room-with-concrete-floor_53876-88447.jpg?w=2000"
@@ -70,19 +75,20 @@ const Background = styled.div`
   height: 400px;
   background: linear-gradient(
     180deg,
-    rgba(6, 13, 34, 0) 0%,
-    rgba(6, 13, 34, 0.5) 90%,
-    #000000 100%
+    rgba(6, 13, 34, 0) 40%,
+    rgba(6, 13, 34, 0.6)
   );
   position: relative;
 `;
 
 const Image = styled.div`
   width: 100%;
-  height: 400px;
+  height: 100%;
   position: absolute;
   z-index: -1;
   background: ${(props) => `url(${props.imageUrl})`};
+  background-size: cover;
+  background-position: 50% 35%;
 `;
 
 const BackgroundColor = styled.div`
