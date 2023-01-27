@@ -1,14 +1,24 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import Navbar from "./components/navbar";
 
+import SignUp from "./pages/Enroll/SignUp";
+import SignIn from "./pages/Enroll/SignIn";
+
+import Navbar from "./components/navbar";
 import Home from "./pages/Dashboard/Home";
 import Search from "./pages/Dashboard/Search";
 import MediaInfo from "./pages/Dashboard/MediaInfo";
 import SearchBar from "./components/SearchBar";
-import SignUp from "./pages/Enroll/SignUp";
-import SignIn from "./pages/Enroll/SignIn";
+import Profile from "./pages/Dashboard/Profile";
+
 import { UserProvider } from "./components/contexts/UserContext";
+
+import useToken from "./hooks/useToken";
 
 function App() {
   return (
@@ -44,12 +54,30 @@ function App() {
                 </SearchBar>
               }
             />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRouteGuard>
+                  <Profile />
+                </ProtectedRouteGuard>
+              }
+            />
             <Route path="/movie/:movieId/:movieName" element={<MediaInfo />} />
           </Routes>
         </Router>
       </UserProvider>
     </>
   );
+}
+
+function ProtectedRouteGuard({ children }) {
+  const token = useToken();
+
+  if (!token) {
+    return <Navigate to="/sign-in" />;
+  }
+
+  return <>{children}</>;
 }
 
 export default App;
