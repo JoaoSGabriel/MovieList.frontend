@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import styled from "styled-components";
 import PlanningButton from "./PlanningButton";
+import WatchedButton from "./WatchedButton";
 
 export default function ListButton({ movieDetails, token }) {
   const dropdownRef = useRef(null);
@@ -17,7 +18,7 @@ export default function ListButton({ movieDetails, token }) {
       <Menu>
         <IoIosArrowDown />
         <MenuDropDown ref={dropdownRef} isActive={isActive}>
-          <span>Assistido</span>
+          <WatchedButton movieDetails={movieDetails} token={token} />
           <p></p>
           <PlanningButton movieDetails={movieDetails} token={token} />
         </MenuDropDown>
