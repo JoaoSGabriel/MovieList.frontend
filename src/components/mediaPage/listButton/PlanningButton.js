@@ -29,7 +29,7 @@ export default function PlanningButton({ movieDetails, token }) {
 
   function planningSee() {
     if (!token) {
-      toast("Você precista estar conectado para marcar o filme como planejado");
+      return toast("É necessário fazer login para isso");
     }
 
     let src;
@@ -59,7 +59,7 @@ export default function PlanningButton({ movieDetails, token }) {
 
   function dismissPlanning() {
     if (!token) {
-      toast("Você precista estar conectado para marcar o filme como visto");
+      return toast("É necessário fazer login para isso");
     }
 
     const promisse = deleteMoviePlanning(token, planning.id);

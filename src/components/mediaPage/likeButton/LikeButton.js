@@ -16,12 +16,18 @@ export default function LikeButton({ movieDetails, token }) {
   const [reload, setReload] = useState(false);
 
   useEffect(() => {
-    const promisse = searchMovieFavorit(token, movieDetails.id);
-    promisse
-      .then((e) => {
-        setIsFavorit(e);
-      })
-      .catch(setIsFavorit([]));
+    if (!token) return;
+
+    if (movieDetails?.id) {
+      const promisse = searchMovieFavorit(token, movieDetails.id);
+      promisse
+        .then((e) => {
+          setIsFavorit(e);
+        })
+        .catch(() => {
+          setIsFavorit([]);
+        });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movieDetails, reload]);
 
