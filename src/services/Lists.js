@@ -9,3 +9,16 @@ export async function postMovieFavorit(token, body) {
 
   return response.data;
 }
+
+export async function searchMovieFavorit(token, tmdbMovieId) {
+  const response = await api.get(
+    `/action/favorits?tmdbMovieId=${tmdbMovieId}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  return response.data;
+}

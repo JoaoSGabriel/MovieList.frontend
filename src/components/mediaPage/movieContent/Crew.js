@@ -29,7 +29,7 @@ export default function Crew({ info }) {
       </Header>
       <Wrappler>
         {render.map((value, index) => (
-          <CrewCard>
+          <CrewCard key={index}>
             {value.profile_path ? (
               <img
                 src={"https://image.tmdb.org/t/p/w500" + value.profile_path}
