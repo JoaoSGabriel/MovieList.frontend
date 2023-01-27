@@ -15,8 +15,9 @@ export default function ListButton() {
       <Menu>
         <IoIosArrowDown />
         <MenuDropDown ref={dropdownRef} isActive={isActive}>
-          <span>Marcar como assistido</span>
-          <span>Marcar como planejando</span>
+          <span>Já assisti</span>
+          <p></p>
+          <span>Planejo ver</span>
         </MenuDropDown>
       </Menu>
     </Wrappler>
@@ -24,7 +25,7 @@ export default function ListButton() {
 }
 
 const Wrappler = styled.div`
-  width: 160px;
+  width: 120px;
   height: 35px;
   padding: 0 20px;
   background-color: green;
@@ -34,7 +35,7 @@ const Wrappler = styled.div`
   position: absolute;
   top: 240px;
   left: calc(-215px);
-  background: rgb(61, 180, 242);
+  background: rgb(0, 153, 0);
   border-radius: 3px;
   color: rgb(255, 255, 255);
   cursor: pointer;
@@ -49,9 +50,9 @@ const Menu = styled.div`
 `;
 
 const MenuDropDown = styled.div`
-  width: 160px;
+  width: 120px;
   padding: 10px 0;
-  background: rgb(61, 180, 242);
+  background: rgb(0, 153, 0);
   border-radius: 5px;
 
   display: flex;
@@ -70,14 +71,19 @@ const MenuDropDown = styled.div`
   span {
     width: 80%;
     display: flex;
+    justify-content: center;
     align-items: center;
-    margin: 8px 0;
-    text-align: center;
+    padding: 10px 0;
     font-size: 0.9rem;
     letter-spacing: 0.03rem;
 
     :hover {
       transform: scale(1.1);
     }
+  }
+
+  p {
+    width: 80%;
+    border-bottom: 1px solid #bcbedc;
   }
 `;

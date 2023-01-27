@@ -7,8 +7,8 @@ import MovieInfo from "./movieInfo/index";
 import SideBarInfo from "./SIdeBarInfo";
 import MovieContent from "./movieContent";
 import LoaderScreen from "../LoaderScreen";
-import ListButton from "./ListButton";
-import LikeButton from "./LikeButton";
+import ListButton from "./listButton/ListButton";
+import LikeButton from "./likeButton/LikeButton";
 
 export default function MediaPage() {
   const [movieDetails, setMovieDetails] = useState([]);

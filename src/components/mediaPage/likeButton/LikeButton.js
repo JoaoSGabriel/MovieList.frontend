@@ -3,12 +3,12 @@ import { ImHeart } from "react-icons/im";
 import { toast } from "react-toastify";
 import styled from "styled-components";
 
-import useMovieFavorit from "../../hooks/API/useMovieFavorit";
-import useToken from "../../hooks/useToken";
+import useMovieFavorit from "../../../hooks/API/useMovieFavorit";
+import useToken from "../../../hooks/useToken";
 import {
   deleteMovieFavorit,
   searchMovieFavorit,
-} from "../../services/FavoritFunctional";
+} from "../../../services/FavoritFunctional";
 
 export default function LikeButton({ movieDetails }) {
   const { postFavorit } = useMovieFavorit();
