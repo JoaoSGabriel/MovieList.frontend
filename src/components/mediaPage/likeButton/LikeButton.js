@@ -4,15 +4,13 @@ import { toast } from "react-toastify";
 import styled from "styled-components";
 
 import useMovieFavorit from "../../../hooks/API/useMovieFavorit";
-import useToken from "../../../hooks/useToken";
 import {
   deleteMovieFavorit,
   searchMovieFavorit,
 } from "../../../services/FavoritFunctional";
 
-export default function LikeButton({ movieDetails }) {
+export default function LikeButton({ movieDetails, token }) {
   const { postFavorit } = useMovieFavorit();
-  const token = useToken();
 
   const [isFavorit, setIsFavorit] = useState([]);
   const [reload, setReload] = useState(false);

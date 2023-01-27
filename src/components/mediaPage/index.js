@@ -9,6 +9,7 @@ import MovieContent from "./movieContent";
 import LoaderScreen from "../LoaderScreen";
 import ListButton from "./listButton/ListButton";
 import LikeButton from "./likeButton/LikeButton";
+import useToken from "../../hooks/useToken";
 
 export default function MediaPage() {
   const [movieDetails, setMovieDetails] = useState([]);
@@ -16,6 +17,7 @@ export default function MediaPage() {
   const [moviePoster, setMoviePoster] = useState("");
 
   const params = useParams();
+  const token = useToken();
 
   const { detailsLoading, getDetails } = useGetDetailsMovie();
 
@@ -60,8 +62,8 @@ export default function MediaPage() {
               <Details>
                 <Banner>
                   <img src={moviePoster} alt="movie Poster" />
-                  <ListButton />
-                  <LikeButton movieDetails={movieDetails} />
+                  <ListButton movieDetails={movieDetails} token={token} />
+                  <LikeButton movieDetails={movieDetails} token={token} />
                 </Banner>
                 <MovieInfo movieDetails={movieDetails} />
               </Details>
