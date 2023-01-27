@@ -1,7 +1,7 @@
 import useAsync from "../useAsync";
 import useToken from "../useToken";
 
-import * as listAPI from "../../services/Lists";
+import * as listAPI from "../../services/FavoritFunctional";
 
 export default function useMovieFavorit() {
   const token = useToken();

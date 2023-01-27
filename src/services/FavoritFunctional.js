@@ -22,3 +22,13 @@ export async function searchMovieFavorit(token, tmdbMovieId) {
 
   return response.data;
 }
+
+export async function deleteMovieFavorit(token, favoritId) {
+  const response = await api.delete(`/action/favorits?favoritId=${favoritId}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return response.data;
+}

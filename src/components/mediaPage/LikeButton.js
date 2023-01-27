@@ -5,28 +5,35 @@ import styled from "styled-components";
 
 import useMovieFavorit from "../../hooks/API/useMovieFavorit";
 import useToken from "../../hooks/useToken";
-import { searchMovieFavorit } from "../../services/Lists";
+import {
+  deleteMovieFavorit,
+  searchMovieFavorit,
+} from "../../services/FavoritFunctional";
 
 export default function LikeButton({ movieDetails }) {
   const { postFavorit } = useMovieFavorit();
   const token = useToken();
-  const [isFavorit, setIsFavorit] = useState(false);
+
+  const [isFavorit, setIsFavorit] = useState([]);
+  console.log(isFavorit);
   const [reload, setReload] = useState(false);
 
   useEffect(() => {
     const promisse = searchMovieFavorit(token, movieDetails.id);
     promisse
-      .then(() => {
-        setIsFavorit(true);
+      .then((e) => {
+        setIsFavorit(e);
       })
-      .catch((err) => {
-        return;
-      });
+      .catch(setIsFavorit([]));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movieDetails, reload]);
 
   function deleteFavoritMovie() {
-    console.log("vai deletar");
+    const promisse = deleteMovieFavorit(token, isFavorit.id);
+    promisse.then(() => {
+      toast("Filme deletado dos favoritos!");
+      setReload(!reload);
+    });
   }
 
   function setMovieAsFavorit() {
@@ -56,7 +63,7 @@ export default function LikeButton({ movieDetails }) {
 
   return (
     <>
-      {isFavorit ? (
+      {isFavorit?.id ? (
         <LikeWrappler isFavorit={isFavorit} onClick={deleteFavoritMovie}>
           <ImHeart />
         </LikeWrappler>
@@ -84,7 +91,9 @@ const LikeWrappler = styled.div`
   font-size: 1.2rem;
 
   //transições
-  color: ${(props) => (props.isFavorit ? "rgb(255, 255, 255)" : "#2b2d42")};
-  background: ${(props) => (props.isFavorit ? "rgb(236, 41, 75)" : "white")};
-  border: ${(props) => (props.isFavorit ? "none" : "1px solid #2b2d42")};
+  color: ${({ isFavorit }) =>
+    isFavorit?.id ? "rgb(255, 255, 255)" : "#2b2d42"};
+  background: ${({ isFavorit }) =>
+    isFavorit?.id ? "rgb(236, 41, 75)" : "rgb(255, 255, 255)"};
+  border: ${({ isFavorit }) => (isFavorit?.id ? "none" : "1px solid #2b2d42")};
 `;
