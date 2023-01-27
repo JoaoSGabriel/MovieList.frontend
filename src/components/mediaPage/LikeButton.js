@@ -15,7 +15,6 @@ export default function LikeButton({ movieDetails }) {
   const token = useToken();
 
   const [isFavorit, setIsFavorit] = useState([]);
-  console.log(isFavorit);
   const [reload, setReload] = useState(false);
 
   useEffect(() => {
@@ -37,6 +36,11 @@ export default function LikeButton({ movieDetails }) {
   }
 
   function setMovieAsFavorit() {
+    if (!token) {
+      toast("Você precista estar conectado para selecionar favoritos");
+      return;
+    }
+
     let src;
     if (movieDetails?.poster_path) {
       src = `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`;

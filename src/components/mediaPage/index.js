@@ -35,7 +35,13 @@ export default function MediaPage() {
         );
       }
 
-      setMoviePoster("https://image.tmdb.org/t/p/w1280" + p.poster_path);
+      if (p?.poster_path) {
+        setMoviePoster("https://image.tmdb.org/t/p/w1280" + p.poster_path);
+      } else {
+        setMoviePoster(
+          "https://t3.ftcdn.net/jpg/04/34/72/82/360_F_434728286_OWQQvAFoXZLdGHlObozsolNeuSxhpr84.jpg"
+        );
+      }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params]);
