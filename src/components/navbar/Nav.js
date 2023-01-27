@@ -23,7 +23,7 @@ export default function Nav() {
       )}
       <div
         onClick={() => {
-          navigate("/search/a");
+          navigate("/search/");
         }}
       >
         Pesquisar
@@ -35,7 +35,7 @@ export default function Nav() {
       >
         Tela Inicial
       </div>
-      <div>Social</div>
+      <div>Meus Filmes</div>
     </Container>
   );
 }
