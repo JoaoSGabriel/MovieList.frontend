@@ -10,7 +10,17 @@ export default function Nav() {
 
   return (
     <Container>
-      {token ? <div>Perfil</div> : <></>}
+      {token ? (
+        <div
+          onClick={() => {
+            navigate("/profile");
+          }}
+        >
+          Perfil
+        </div>
+      ) : (
+        <></>
+      )}
       <div
         onClick={() => {
           navigate("/search/a");

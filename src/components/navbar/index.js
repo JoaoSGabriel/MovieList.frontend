@@ -28,6 +28,9 @@ const Container = styled.div`
   -ms-user-select: none;
   user-select: none;
   width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1;
   background: #2b2d42;
   color: #bcbedc;
 `;

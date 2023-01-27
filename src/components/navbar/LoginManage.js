@@ -1,14 +1,17 @@
 import styled from "styled-components";
+import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { IoIosArrowDown } from "react-icons/io";
 import { IoPersonOutline } from "react-icons/io5";
 import { ImExit } from "react-icons/im";
-import { useRef, useState } from "react";
+
 import useToken from "../../hooks/useToken";
 
 export default function LoginManage() {
   const dropdownRef = useRef(null);
   const token = useToken();
+  const navigate = useNavigate();
   const [isActive, setIsActive] = useState(false);
 
   function logout() {
@@ -37,7 +40,11 @@ export default function LoginManage() {
         <span onClick={logout}>
           <ImExit style={{ margin: "0 10px" }} /> logout
         </span>
-        <span>
+        <span
+          onClick={() => {
+            navigate("/profile");
+          }}
+        >
           <IoPersonOutline style={{ margin: "0 10px" }} /> Perfil
         </span>
       </ButtonWrapper>
