@@ -16,6 +16,14 @@ export default function Collections({ collectionDetails }) {
     }
   }, [collectionDetails]);
 
+  function contentImage(value) {
+    if (value.poster_path) {
+      return `https://image.tmdb.org/t/p/w500/${value.poster_path}`;
+    }
+
+    return "https://t3.ftcdn.net/jpg/04/34/72/82/360_F_434728286_OWQQvAFoXZLdGHlObozsolNeuSxhpr84.jpg";
+  }
+
   function seeMore(value) {
     navigate(`/movie/${value.id}/${value.title}`);
   }
@@ -32,10 +40,7 @@ export default function Collections({ collectionDetails }) {
           <Main>
             {movieList.map((value, index) => (
               <CollectionCard key={index} onClick={() => seeMore(value)}>
-                <img
-                  src={"https://image.tmdb.org/t/p/w500" + value.poster_path}
-                  alt="poster"
-                />
+                <img src={contentImage(value)} alt="poster" />
                 <Info>
                   <h1>{value.title}</h1>
                   <h2>Data de lançamento:</h2>

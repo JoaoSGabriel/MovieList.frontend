@@ -39,10 +39,9 @@ export default function LikeButton({ movieDetails, token }) {
     });
   }
 
-  function setMovieAsFavorit() {
+  async function setMovieAsFavorit() {
     if (!token) {
-      toast("Você precista estar conectado para selecionar favoritos");
-      return;
+      return toast("É necessário fazer login para isso");
     }
 
     let src;
@@ -60,7 +59,7 @@ export default function LikeButton({ movieDetails, token }) {
     };
 
     try {
-      const { favoritError } = postFavorit(body);
+      const { favoritError } = await postFavorit(body);
       if (favoritError) throw favoritError;
       setReload(!reload);
       toast("Filme adicionado aos favoritos");
