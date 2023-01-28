@@ -29,3 +29,13 @@ export async function deleteMoviePlanning(token, planningId) {
 
   return response.data;
 }
+
+export async function getAllPlanning(token) {
+  const response = await api.get(`/planning/all`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return response.data;
+}
