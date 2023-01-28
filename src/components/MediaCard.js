@@ -17,9 +17,9 @@ export default function MediaCard({ info, style }) {
 
   function seeMore() {
     if (info.tmdbMovieId) {
-      navigate(`/movie/${info.tmdbMovieId}/${info.tmdbTitle}`);
+      navigate(`/movie/${info.tmdbMovieId}`);
     } else {
-      navigate(`/movie/${info.id}/${info.title}`);
+      navigate(`/movie/${info.id}`);
     }
   }
 

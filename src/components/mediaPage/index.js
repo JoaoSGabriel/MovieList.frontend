@@ -22,6 +22,7 @@ export default function MediaPage() {
   const { detailsLoading, getDetails } = useGetDetailsMovie();
 
   useEffect(() => {
+    console.log(params);
     const promisse = getDetails(params.movieId);
     promisse.then((p) => {
       setMovieDetails(p);

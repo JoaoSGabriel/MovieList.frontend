@@ -25,7 +25,7 @@ export default function Collections({ collectionDetails }) {
   }
 
   function seeMore(value) {
-    navigate(`/movie/${value.id}/${value.title}`);
+    navigate(`/movie/${value.id}`);
   }
 
   function convertDate(object) {
