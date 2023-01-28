@@ -35,7 +35,13 @@ export default function Nav() {
       >
         Tela Inicial
       </div>
-      <div>Meus Filmes</div>
+      <div
+        onClick={() => {
+          navigate("/movies");
+        }}
+      >
+        Meus Filmes
+      </div>
     </Container>
   );
 }

@@ -19,6 +19,7 @@ import Profile from "./pages/Dashboard/Profile";
 import { UserProvider } from "./components/contexts/UserContext";
 
 import useToken from "./hooks/useToken";
+import ListMovies from "./pages/Dashboard/ListMovies";
 
 function App() {
   return (
@@ -63,6 +64,7 @@ function App() {
               }
             />
             <Route path="/movie/:movieId/:movieName" element={<MediaInfo />} />
+            <Route path="/movies" element={<ListMovies />} />
           </Routes>
         </Router>
       </UserProvider>
