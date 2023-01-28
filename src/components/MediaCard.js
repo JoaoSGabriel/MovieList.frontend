@@ -1,9 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-export default function MediaCard({ info }) {
+export default function MediaCard({ info, style }) {
   function contentImage() {
-    if (info.poster_path) {
+    if (info?.tmbdPoster_path) {
+      return info.tmbdPoster_path;
+    }
+
+    if (info?.poster_path) {
       return `https://image.tmdb.org/t/p/w500/${info.poster_path}`;
     }
 
@@ -12,13 +16,17 @@ export default function MediaCard({ info }) {
   const navigate = useNavigate();
 
   function seeMore() {
-    navigate(`/movie/${info.id}/${info.title}`);
+    if (info.tmdbMovieId) {
+      navigate(`/movie/${info.tmdbMovieId}/${info.tmdbTitle}`);
+    } else {
+      navigate(`/movie/${info.id}/${info.title}`);
+    }
   }
 
   return (
-    <Container onClick={seeMore}>
+    <Container onClick={seeMore} style={style}>
       <img src={contentImage()} alt="loaded Banner" />
-      <h1>{info.title}</h1>
+      {info?.tmdbTitle ? <h1>{info?.tmdbTitle}</h1> : <h1>{info?.title}</h1>}
     </Container>
   );
 }

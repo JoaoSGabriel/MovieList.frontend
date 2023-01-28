@@ -29,3 +29,13 @@ export async function deleteMovieFavorit(token, favoritId) {
 
   return response.data;
 }
+
+export async function getAllFavorits(token) {
+  const response = await api.get(`/favorits/all`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return response.data;
+}
