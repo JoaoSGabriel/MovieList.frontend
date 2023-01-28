@@ -23,10 +23,6 @@ const Container = styled.div`
   display: flex;
   height: 75px;
   justify-content: center;
-  transition: background 0.8s ease, color 0.2s;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
   width: 100%;
   position: fixed;
   top: 0;

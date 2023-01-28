@@ -1,25 +1,36 @@
 import styled from "styled-components";
+import Home from "../HomeStyle";
+import History from "./History";
+import Movies from "./Movies";
+import UserArea from "./UserArea";
 
 export default function ProfilePage() {
   return (
-    <Screen>
-      <img
-        src="https://www.gov.br/agricultura/pt-br/assuntos/riscos-seguro/imagens/em_construao.png/@@images/image.png"
-        alt="construção"
-      />
-    </Screen>
+    <>
+      <UserArea />
+      <Home>
+        <ContentArea>
+          <Area>
+            <Movies />
+          </Area>
+          <Area>
+            <History />
+          </Area>
+        </ContentArea>
+      </Home>
+    </>
   );
 }
 
-const Screen = styled.div`
-  width: 100vw;
-  height: calc(100vh - 220px);
+const ContentArea = styled.div`
+  width: 100%;
+  max-width: 1440px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+  justify-content: space-between;
+  margin: 20px 0 0 0;
+`;
 
-  img {
-    position: fixed;
-  }
+const Area = styled.div`
+  width: 48%;
+  height: 800px;
 `;
