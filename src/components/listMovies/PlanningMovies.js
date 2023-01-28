@@ -18,7 +18,6 @@ export default function PlanningMovies() {
     const promisse = getAllPlanning(token);
     promisse
       .then((p) => {
-        console.log(p);
         setLoading(false);
         setMovieList(p);
       })
@@ -55,19 +54,20 @@ export default function PlanningMovies() {
   );
 }
 
-export const List = styled.div`
+const List = styled.div`
   width: 100%;
   max-width: 1440px;
   margin: 40px 0 0 0;
 `;
 
-export const Container = styled.div`
+const Container = styled.div`
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   box-sizing: border-box;
 `;
 
-export const Text = styled.div`
+const Text = styled.div`
   width: 100%;
   text-align: start;
   font-size: 20px;

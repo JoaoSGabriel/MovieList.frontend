@@ -33,7 +33,11 @@ export default function SearchPage() {
         )}
         <Container>
           {movieList.map((value, index) => (
-            <MediaCard key={index} info={value} />
+            <MediaCard
+              key={index}
+              info={value}
+              style={{ margin: "0 30px 20px 0" }}
+            />
           ))}
         </Container>
       </List>
@@ -45,6 +49,5 @@ const Container = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   box-sizing: border-box;
 `;

@@ -29,3 +29,13 @@ export async function deleteMovieWatched(token, watchedId) {
 
   return response.data;
 }
+
+export async function getAllWatched(token) {
+  const response = await api.get(`/watched/all`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return response.data;
+}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import useToken from "../../hooks/useToken";
+import { getAllWatched } from "../../services/WatchedFunctional";
 import Loader from "../homePage/Loader";
 import MediaCard from "../MediaCard";
 
@@ -10,22 +11,22 @@ export default function WatchedMovies() {
 
   const token = useToken();
 
-  /*useEffect(() => {
-    if (token) return;
+  useEffect(() => {
+    if (!token) return;
 
-    setLoading(true)
-    const promisse = ();
+    setLoading(true);
+    const promisse = getAllWatched(token);
     promisse
       .then((p) => {
-        setLoading(false)
+        setLoading(false);
         setMovieList(p);
       })
       .catch(() => {
-        setLoading(false)
+        setLoading(false);
         setMovieList([]);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);*/
+  }, []);
 
   return (
     <List>
@@ -37,7 +38,11 @@ export default function WatchedMovies() {
           {movieList[0] ? (
             <Container>
               {movieList.map((value, index) => (
-                <MediaCard key={index} info={value} />
+                <MediaCard
+                  key={index}
+                  info={value}
+                  style={{ margin: "0 30px 20px 0" }}
+                />
               ))}
             </Container>
           ) : (
@@ -49,19 +54,20 @@ export default function WatchedMovies() {
   );
 }
 
-export const List = styled.div`
+const List = styled.div`
   width: 100%;
+  max-width: 1440px;
   margin: 40px 0 0 0;
 `;
 
-export const Container = styled.div`
+const Container = styled.div`
   width: 100%;
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
+  box-sizing: border-box;
 `;
 
-export const Text = styled.div`
+const Text = styled.div`
   width: 100%;
   text-align: start;
   font-size: 20px;
