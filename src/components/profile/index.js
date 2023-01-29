@@ -1,20 +1,23 @@
 import styled from "styled-components";
+import useToken from "../../hooks/useToken";
 import Home from "../HomeStyle";
 import History from "./History";
 import Movies from "./Movies";
 import UserArea from "./UserArea";
 
 export default function ProfilePage() {
+  const token = useToken();
+
   return (
     <>
-      <UserArea />
+      <UserArea token={token} />
       <Home>
         <ContentArea>
           <Area>
-            <Movies />
+            <Movies token={token} />
           </Area>
           <Area>
-            <History />
+            <History token={token} />
           </Area>
         </ContentArea>
       </Home>

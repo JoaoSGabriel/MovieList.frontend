@@ -64,7 +64,14 @@ function App() {
               }
             />
             <Route path="/movie/:movieId" element={<MediaInfo />} />
-            <Route path="/movies" element={<ListMovies />} />
+            <Route
+              path="/movies"
+              element={
+                <ProtectedRouteGuard>
+                  <ListMovies />
+                </ProtectedRouteGuard>
+              }
+            />
           </Routes>
         </Router>
       </UserProvider>

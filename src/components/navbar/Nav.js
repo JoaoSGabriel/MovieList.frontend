@@ -35,13 +35,17 @@ export default function Nav() {
       >
         Tela Inicial
       </div>
-      <div
-        onClick={() => {
-          navigate("/movies");
-        }}
-      >
-        Meus Filmes
-      </div>
+      {token ? (
+        <div
+          onClick={() => {
+            navigate("/movies");
+          }}
+        >
+          Meus Filmes
+        </div>
+      ) : (
+        <></>
+      )}
     </Container>
   );
 }

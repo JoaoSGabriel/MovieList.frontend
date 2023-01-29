@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import useToken from "../../hooks/useToken";
 import { getAllFavorits } from "../../services/FavoritFunctional";
 import LoaderDiv from "../LoaderDiv";
 import MediaCard from "../MediaCard";
 
-export default function Movies() {
-  const token = useToken();
-
+export default function Movies({ token }) {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
 
