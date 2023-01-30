@@ -1,14 +1,19 @@
 import styled from "styled-components";
 
-export default function UserArea() {
+export default function UserArea({ info }) {
+  console.log(info);
+  function getImage() {
+    if (info?.photo_path) {
+      return info.photo_path;
+    }
+
+    return "https://www.biiainsurance.com/wp-content/uploads/2015/05/no-image.jpg";
+  }
   return (
-    <Background>
+    <Background url={info?.backdrop_path}>
       <Profile>
-        <img
-          src="https://www.biiainsurance.com/wp-content/uploads/2015/05/no-image.jpg"
-          alt="profile'"
-        />
-        <Name>Nome</Name>
+        <img src={getImage()} alt="profile'" />
+        <Name>{info?.username}</Name>
       </Profile>
     </Background>
   );
@@ -17,9 +22,11 @@ export default function UserArea() {
 const Background = styled.div`
   width: 100%;
   height: 400px;
-  background: #2b2d42;
   display: flex;
   justify-content: center;
+  background: ${(props) => (props.url ? `url(${props.url})` : "#2b2d42")};
+  background-size: cover;
+  background-position: 50% 35%;
 `;
 
 const Profile = styled.div`

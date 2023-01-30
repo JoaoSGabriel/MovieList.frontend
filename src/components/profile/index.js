@@ -1,26 +1,48 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import { getProfile } from "../../services/ProfileApi";
 import Home from "../HomeStyle";
+import LoaderScreen from "../LoaderScreen";
 import History from "./History";
 import Movies from "./Movies";
 import UserArea from "./UserArea";
 
 export default function ProfilePage() {
+  const [profile, setProfile] = useState([]);
   const params = useParams();
-  console.log(params.username);
+
+  useEffect(() => {
+    if (params?.username) {
+      const promisse = getProfile(params.username);
+      promisse
+        .then((e) => {
+          setProfile(e);
+        })
+        .catch(() => {
+          setProfile([]);
+        });
+    }
+  }, [params]);
   return (
     <>
-      <UserArea />
-      <Home>
-        <ContentArea>
-          <Area>
-            <Movies />
-          </Area>
-          <Area>
-            <History />
-          </Area>
-        </ContentArea>
-      </Home>
+      {profile?.id ? (
+        <>
+          <UserArea info={profile} />
+          <Home>
+            <ContentArea>
+              <Area>
+                <Movies />
+              </Area>
+              <Area>
+                <History />
+              </Area>
+            </ContentArea>
+          </Home>
+        </>
+      ) : (
+        <LoaderScreen />
+      )}
     </>
   );
 }
