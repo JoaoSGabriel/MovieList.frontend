@@ -5,3 +5,13 @@ export async function getProfile(username) {
 
   return response.data;
 }
+
+export async function putProfile(token, body) {
+  const response = await api.put(`/users/profile`, body, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return response.data;
+}

@@ -8,8 +8,12 @@ export default UserContext;
 export function UserProvider({ children }) {
   const [userData, setUserData] = useLocalStorage("userData", {});
 
+  const [profileData, setProfileData] = useLocalStorage("profileData", {});
+
   return (
-    <UserContext.Provider value={{ userData, setUserData }}>
+    <UserContext.Provider
+      value={{ userData, setUserData, profileData, setProfileData }}
+    >
       {children}
     </UserContext.Provider>
   );

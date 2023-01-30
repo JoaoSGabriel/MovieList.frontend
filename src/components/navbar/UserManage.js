@@ -1,18 +1,18 @@
 import styled from "styled-components";
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { IoIosArrowDown } from "react-icons/io";
 import { IoPersonOutline } from "react-icons/io5";
 import { ImExit } from "react-icons/im";
 
-import useLocalStorage from "../../hooks/useLocalStorage";
+import UserContext from "../contexts/UserContext";
 
 export default function UserManage() {
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
 
-  const user = useLocalStorage("userData", {});
+  const { profileData } = useContext(UserContext);
 
   const [isActive, setIsActive] = useState(false);
 
@@ -23,8 +23,8 @@ export default function UserManage() {
   }
 
   function getImage() {
-    if (user[0].user.Profile[0]?.photo_path) {
-      return user[0].user.Profile[0]?.photo_path;
+    if (profileData?.photo_path) {
+      return profileData.photo_path;
     } else {
       return "https://www.biiainsurance.com/wp-content/uploads/2015/05/no-image.jpg";
     }
@@ -45,7 +45,7 @@ export default function UserManage() {
         </span>
         <span
           onClick={() => {
-            navigate(`/profile/${user[0].user.Profile[0].username}`);
+            navigate(`/profile/${profileData.username}`);
           }}
         >
           <IoPersonOutline style={{ margin: "0 10px" }} /> Perfil

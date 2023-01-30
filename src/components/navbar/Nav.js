@@ -1,21 +1,22 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import useLocalStorage from "../../hooks/useLocalStorage";
 
 import useToken from "../../hooks/useToken";
+import UserContext from "../contexts/UserContext";
 
 export default function Nav() {
   const token = useToken();
   const navigate = useNavigate();
 
-  const user = useLocalStorage("userData", {});
+  const { profileData } = useContext(UserContext);
 
   return (
     <Container>
       {token ? (
         <div
           onClick={() => {
-            navigate(`/profile/${user[0].user.Profile[0].username}`);
+            navigate(`/profile/${profileData.username}`);
           }}
         >
           Perfil

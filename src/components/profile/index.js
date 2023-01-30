@@ -7,10 +7,12 @@ import Home from "../HomeStyle";
 import LoaderScreen from "../LoaderScreen";
 import History from "./History";
 import Movies from "./Movies";
+import UpdateArea from "./UpdateArea";
 import UserArea from "./UserArea";
 
 export default function ProfilePage() {
   const [profile, setProfile] = useState([]);
+  const [isEditing, setIsEditing] = useState(false);
 
   const params = useParams();
   const token = useToken();
@@ -26,15 +28,22 @@ export default function ProfilePage() {
           setProfile([]);
         });
     }
-  }, [params]);
+  }, [params, isEditing]);
+
   return (
     <>
       {profile?.id ? (
         <>
-          <UserArea info={profile} />
+          <UserArea info={profile} setIsEditing={setIsEditing} />
           <Home>
             <ContentArea>
               <Area>
+                <UpdateArea
+                  info={profile}
+                  token={token}
+                  isEditing={isEditing}
+                  setIsEditing={setIsEditing}
+                />
                 <Movies token={token} profile={profile} />
               </Area>
               <Area>

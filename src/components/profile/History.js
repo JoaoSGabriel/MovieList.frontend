@@ -21,11 +21,14 @@ export default function History({ token, profile }) {
   return (
     <>
       {history[0] ? (
-        <Wrappler>
-          {history.map((value, index) => (
-            <HistoryCard key={index} info={value} />
-          ))}
-        </Wrappler>
+        <>
+          <Title>Histórico de interações</Title>
+          <Wrappler>
+            {history.map((value, index) => (
+              <HistoryCard key={index} info={value} />
+            ))}
+          </Wrappler>
+        </>
       ) : (
         <Empty>Você não possui interações no histórico</Empty>
       )}
@@ -33,9 +36,15 @@ export default function History({ token, profile }) {
   );
 }
 
+const Title = styled.div`
+  width: 100%;
+  font-size: 1.3rem;
+`;
+
 const Wrappler = styled.div`
   width: 100%;
   max-height: 785px;
+  margin: 20px 0 0 0;
   overflow-y: scroll;
   display: flex;
   flex-wrap: wrap;

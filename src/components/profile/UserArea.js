@@ -1,7 +1,10 @@
+import { useState } from "react";
+import { AiOutlineEdit } from "react-icons/ai";
 import styled from "styled-components";
 
-export default function UserArea({ info }) {
-  console.log(info);
+export default function UserArea({ info, setIsEditing }) {
+  const [isActive, setIsActive] = useState(false);
+
   function getImage() {
     if (info?.photo_path) {
       return info.photo_path;
@@ -11,8 +14,21 @@ export default function UserArea({ info }) {
   }
   return (
     <Background url={info?.backdrop_path}>
-      <Profile>
+      <Profile
+        onMouseEnter={() => setIsActive(true)}
+        onMouseLeave={() => setIsActive(false)}
+      >
         <img src={getImage()} alt="profile'" />
+        <EditButton
+          isActive={isActive}
+          onClick={() => {
+            setIsEditing(true);
+          }}
+        >
+          <AiOutlineEdit
+            style={{ color: "rgb(255, 255, 255)", fontSize: "1.3rem" }}
+          />
+        </EditButton>
         <Name>{info?.username}</Name>
       </Profile>
     </Background>
@@ -43,6 +59,27 @@ const Profile = styled.div`
     left: 0px;
     bottom: 0px;
   }
+`;
+
+const EditButton = styled.div`
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  background: rgba(31, 38, 49, 0.9);
+  box-shadow: 0 0 5px 2px rgb(45 45 45 / 35%);
+
+  opacity: ${(props) => (props.isActive ? "1" : "0")};
+  visibility: ${(props) => (props.isActive ? "visible" : "hidden")};
+  transform: ${(props) =>
+    props.isActive ? "translateY(0)" : "translateY(-3px);"};
 `;
 
 const Name = styled.div`
