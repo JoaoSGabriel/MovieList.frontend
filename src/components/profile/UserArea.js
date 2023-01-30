@@ -36,6 +36,9 @@ const Profile = styled.div`
   position: relative;
 
   img {
+    width: 260px;
+    height: 260px;
+    size: cover;
     position: absolute;
     left: 0px;
     bottom: 0px;
@@ -46,7 +49,9 @@ const Name = styled.div`
   position: absolute;
   bottom: 20px;
   left: 280px;
+  padding: 10px;
+  border-radius: 5px;
   font-size: 2rem;
   color: rgb(255, 255, 255);
-  -ms-high-contrast-adjust: auto;
+  background-color: rgba(0, 0, 0, 0.7);
 `;

@@ -4,7 +4,7 @@ import { getAllFavorits } from "../../services/FavoritFunctional";
 import LoaderDiv from "../LoaderDiv";
 import MediaCard from "../MediaCard";
 
-export default function Movies({ token }) {
+export default function Movies({ token, profile }) {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
 

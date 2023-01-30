@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import useToken from "../../hooks/useToken";
 import { getProfile } from "../../services/ProfileApi";
 import Home from "../HomeStyle";
 import LoaderScreen from "../LoaderScreen";
@@ -10,7 +11,9 @@ import UserArea from "./UserArea";
 
 export default function ProfilePage() {
   const [profile, setProfile] = useState([]);
+
   const params = useParams();
+  const token = useToken();
 
   useEffect(() => {
     if (params?.username) {
@@ -32,10 +35,10 @@ export default function ProfilePage() {
           <Home>
             <ContentArea>
               <Area>
-                <Movies />
+                <Movies token={token} profile={profile} />
               </Area>
               <Area>
-                <History />
+                <History token={token} profile={profile} />
               </Area>
             </ContentArea>
           </Home>
