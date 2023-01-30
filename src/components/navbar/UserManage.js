@@ -6,22 +6,25 @@ import { IoIosArrowDown } from "react-icons/io";
 import { IoPersonOutline } from "react-icons/io5";
 import { ImExit } from "react-icons/im";
 
-import useToken from "../../hooks/useToken";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
-export default function LoginManage() {
+export default function UserManage() {
   const dropdownRef = useRef(null);
-  const token = useToken();
   const navigate = useNavigate();
+
+  const user = useLocalStorage("userData", {});
+
   const [isActive, setIsActive] = useState(false);
 
   function logout() {
     localStorage.clear("userData");
     window.location.reload();
+    navigate("/");
   }
 
   function getImage() {
-    if (token?.image) {
-      return token.image;
+    if (user[0].user.Profile[0]?.photo_path) {
+      return user[0].user.Profile[0]?.photo_path;
     } else {
       return "https://www.biiainsurance.com/wp-content/uploads/2015/05/no-image.jpg";
     }
@@ -42,7 +45,7 @@ export default function LoginManage() {
         </span>
         <span
           onClick={() => {
-            navigate("/profile");
+            navigate(`/profile/${user[0].user.Profile[0].username}`);
           }}
         >
           <IoPersonOutline style={{ margin: "0 10px" }} /> Perfil

@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-export default function AccountManage() {
+export default function AuthManage() {
   const navigate = useNavigate();
 
   return (

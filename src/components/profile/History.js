@@ -11,7 +11,6 @@ export default function History({ token }) {
     const promisse = getAllHistory(token);
     promisse
       .then((e) => {
-        console.log(e);
         setHistory(e);
       })
       .catch(() => {
@@ -21,11 +20,15 @@ export default function History({ token }) {
 
   return (
     <>
-      <Wrappler>
-        {history.map((value, index) => (
-          <HistoryCard key={index} info={value} />
-        ))}
-      </Wrappler>
+      {history[0] ? (
+        <Wrappler>
+          {history.map((value, index) => (
+            <HistoryCard key={index} info={value} />
+          ))}
+        </Wrappler>
+      ) : (
+        <Empty>Você não possui interações no histórico</Empty>
+      )}
     </>
   );
 }
@@ -41,4 +44,15 @@ const Wrappler = styled.div`
   ::-webkit-scrollbar {
     display: none;
   }
+`;
+
+const Empty = styled.div`
+  width: 100%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255);
+  font-size: 1.3rem;
 `;

@@ -8,7 +8,7 @@ export default function UserArea() {
           src="https://www.biiainsurance.com/wp-content/uploads/2015/05/no-image.jpg"
           alt="profile'"
         />
-        <Name>User Name</Name>
+        <Name>Nome</Name>
       </Profile>
     </Background>
   );

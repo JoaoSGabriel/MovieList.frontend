@@ -1,23 +1,23 @@
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import useToken from "../../hooks/useToken";
 import Home from "../HomeStyle";
 import History from "./History";
 import Movies from "./Movies";
 import UserArea from "./UserArea";
 
 export default function ProfilePage() {
-  const token = useToken();
-
+  const params = useParams();
+  console.log(params.username);
   return (
     <>
-      <UserArea token={token} />
+      <UserArea />
       <Home>
         <ContentArea>
           <Area>
-            <Movies token={token} />
+            <Movies />
           </Area>
           <Area>
-            <History token={token} />
+            <History />
           </Area>
         </ContentArea>
       </Home>

@@ -1,19 +1,21 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 import useToken from "../../hooks/useToken";
 
 export default function Nav() {
   const token = useToken();
-
   const navigate = useNavigate();
+
+  const user = useLocalStorage("userData", {});
 
   return (
     <Container>
       {token ? (
         <div
           onClick={() => {
-            navigate("/profile");
+            navigate(`/profile/${user[0].user.Profile[0].username}`);
           }}
         >
           Perfil
