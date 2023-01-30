@@ -9,6 +9,7 @@ import { Container } from "./AuthStyles";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
 
@@ -27,7 +28,7 @@ export default function Signup() {
       toast("As senhas devem ser iguais!");
     } else {
       try {
-        const { signUpError } = await signUp(email, password);
+        const { signUpError } = await signUp(email, password, username);
         if (signUpError) throw signUpError;
         toast("Inscrito com sucesso! Por favor, faça login.");
         navigate("/sign-in");
@@ -49,10 +50,18 @@ export default function Signup() {
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
+            placeholder="Username"
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+          <input
             placeholder="Senha"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
           <input
             placeholder="Repita a senha"

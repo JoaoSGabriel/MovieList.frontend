@@ -12,12 +12,11 @@ export default function HistoryCard({ info }) {
     if (totalDiff.getUTCHours() < 1 && totalDiff.getUTCMinutes() < 6) {
       return "Agora mesmo";
     } else if (totalDiff.getUTCHours() < 1) {
-      let diff = totalDiff.getUTCMinutes() + "m ";
+      let diff = totalDiff.getUTCMinutes() + "min ";
 
       return `Há ${diff} atrás`;
     } else if (totalDiff.getUTCHours() === 1) {
       let diff = totalDiff.getUTCHours() + " hora ";
-      diff += totalDiff.getUTCMinutes() + " min ";
 
       return `Há ${diff} atrás`;
     } else if (totalDiff.getUTCHours() > 1) {
@@ -53,7 +52,7 @@ export default function HistoryCard({ info }) {
           }}
         >
           Marcou o filme: "<strong>{info.MovieFavorits[0]?.tmdbTitle}</strong>"
-          como favorito
+          como favorito.
         </Text>
       );
     } else if (info?.type === "PLANNING") {
@@ -64,7 +63,7 @@ export default function HistoryCard({ info }) {
           }}
         >
           Tem interesse em assistir o filme: "
-          <strong>{info.PlaningSee[0]?.tmdbTitle}</strong>"
+          <strong>{info.PlaningSee[0]?.tmdbTitle}</strong>".
         </Text>
       );
     } else if (info?.type === "WATCHED") {
@@ -74,7 +73,7 @@ export default function HistoryCard({ info }) {
             navigate(`/movie/${info.Watched[0]?.tmdbMovieId}`);
           }}
         >
-          Assistiu o filme: "<strong>{info.Watched[0]?.tmdbTitle}</strong>"
+          Assistiu o filme: "<strong>{info.Watched[0]?.tmdbTitle}</strong>".
         </Text>
       );
     }

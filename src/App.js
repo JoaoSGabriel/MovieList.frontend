@@ -55,14 +55,7 @@ function App() {
                 </SearchBar>
               }
             />
-            <Route
-              path="/profile"
-              element={
-                <ProtectedRouteGuard>
-                  <Profile />
-                </ProtectedRouteGuard>
-              }
-            />
+            <Route path="/profile/:username" element={<Profile />} />
             <Route path="/movie/:movieId" element={<MediaInfo />} />
             <Route
               path="/movies"
