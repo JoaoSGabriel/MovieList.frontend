@@ -14,7 +14,7 @@ export default function Signin() {
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
-  const { setUserData } = useContext(UserContext);
+  const { setUserData, setProfileData } = useContext(UserContext);
 
   const { loadingSignIn, signInError, signIn } = useSignIn();
 
@@ -28,7 +28,13 @@ export default function Signin() {
     try {
       const userData = await signIn(email, password);
       if (userData?.token) {
+        const profile = {
+          backdrop_path: userData.user.Profile[0].backdrop_path,
+          photo_path: userData.user.Profile[0].photo_path,
+          username: userData.user.Profile[0].username,
+        };
         setUserData(userData);
+        setProfileData(profile);
         toast("Login realizado com sucesso!");
         navigate("/");
       } else {

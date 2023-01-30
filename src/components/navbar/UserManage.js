@@ -18,6 +18,7 @@ export default function UserManage() {
 
   function logout() {
     localStorage.clear("userData");
+    localStorage.clear("profileData");
     window.location.reload();
     navigate("/");
   }

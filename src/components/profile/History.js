@@ -20,9 +20,9 @@ export default function History({ token, profile }) {
 
   return (
     <>
+      <Title>Histórico de interações</Title>
       {history[0] ? (
         <>
-          <Title>Histórico de interações</Title>
           <Wrappler>
             {history.map((value, index) => (
               <HistoryCard key={index} info={value} />
@@ -57,10 +57,12 @@ const Wrappler = styled.div`
 
 const Empty = styled.div`
   width: 100%;
-  height: 150px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  margin: 20px 0 0 0;
+  padding: 50px 0;
+  font-size: 1.3rem;
   border-radius: 5px;
   background-color: rgb(255, 255, 255);
   font-size: 1.3rem;
