@@ -32,7 +32,13 @@ export default function History({ token }) {
 
 const Wrappler = styled.div`
   width: 100%;
+  max-height: 785px;
+  overflow-y: scroll;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
