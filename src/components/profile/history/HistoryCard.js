@@ -78,7 +78,12 @@ export default function HistoryCard({ info, reload, setReload }) {
           />
         </Container>
       </Wrappler>
-      <CommentArea isComment={isComment} />
+      <CommentArea
+        isComment={isComment}
+        historyInfo={historyInfo}
+        reload={reload}
+        setReload={setReload}
+      />
     </>
   );
 }

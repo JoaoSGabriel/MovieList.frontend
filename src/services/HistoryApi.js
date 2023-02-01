@@ -12,6 +12,20 @@ export async function getHistoryInfo(historyId) {
   return response.data;
 }
 
+export async function postComment(token, historyId, comment) {
+  const response = await api.post(
+    `/history/comment`,
+    { historyId, comment },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  return response.data;
+}
+
 export async function postLikeHistory(token, historyId) {
   const response = await api.post(
     `/history/like`,
