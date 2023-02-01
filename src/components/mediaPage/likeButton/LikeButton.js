@@ -3,15 +3,13 @@ import { ImHeart } from "react-icons/im";
 import { toast } from "react-toastify";
 import styled from "styled-components";
 
-import useMovieFavorit from "../../../hooks/API/useMovieFavorit";
 import {
   deleteMovieFavorit,
   searchMovieFavorit,
+  postMovieFavorit,
 } from "../../../services/FavoritApi";
 
 export default function LikeButton({ movieDetails, token }) {
-  const { postFavorit } = useMovieFavorit();
-
   const [isFavorit, setIsFavorit] = useState([]);
   const [reload, setReload] = useState(false);
 
@@ -58,14 +56,15 @@ export default function LikeButton({ movieDetails, token }) {
       tmdbPoster_path: src,
     };
 
-    try {
-      const { favoritError } = await postFavorit(body);
-      if (favoritError) throw favoritError;
-      setReload(!reload);
-      toast("Filme adicionado aos favoritos");
-    } catch (error) {
-      toast("Ops, algo deu errado com sua requisição");
-    }
+    const promisse = postMovieFavorit(token, body);
+    promisse
+      .then(() => {
+        setReload(!reload);
+        toast("Filme adicionado aos favoritos");
+      })
+      .catch(() => {
+        toast("Ops, algo deu errado com sua requisição");
+      });
   }
 
   return (

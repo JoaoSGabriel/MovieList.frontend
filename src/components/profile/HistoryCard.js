@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import InteractionArea from "./InteractionArea";
 
 export default function HistoryCard({ info }) {
   const navigate = useNavigate();
@@ -84,6 +85,7 @@ export default function HistoryCard({ info }) {
       <Container>
         <InsideMenu>{countTimer()}</InsideMenu>
         {searcTitleName()}
+        <InteractionArea />
       </Container>
     </Wrappler>
   );
@@ -113,6 +115,7 @@ const Container = styled.div`
   width: 260px;
   display: flex;
   flex-direction: column;
+  position: relative;
 
   @media screen and (max-width: 1366px) {
     width: 100%;

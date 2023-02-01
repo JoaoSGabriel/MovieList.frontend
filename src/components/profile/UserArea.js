@@ -7,9 +7,10 @@ export default function UserArea({ info, setIsEditing, username }) {
   const [isActive, setIsActive] = useState(false);
   const { profileData } = useContext(UserContext);
 
-  function showEditButton() {
+  function showEditButton(type) {
     if (username !== profileData.username) return;
-    setIsActive(!isActive);
+    if (type === "turnon") setIsActive(true);
+    if (type === "turnof") setIsActive(false);
   }
 
   function getImage() {
@@ -23,10 +24,10 @@ export default function UserArea({ info, setIsEditing, username }) {
     <Background url={info?.backdrop_path}>
       <Profile
         onMouseEnter={() => {
-          showEditButton();
+          showEditButton("turnon");
         }}
         onMouseLeave={() => {
-          showEditButton();
+          showEditButton("turnof");
         }}
       >
         <img src={getImage()} alt="profile'" />
