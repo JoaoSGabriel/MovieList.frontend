@@ -1,6 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components";
+import { RiChatDeleteFill } from "react-icons/ri";
+
+import UserContext from "../../contexts/UserContext";
 import useToken from "../../../hooks/useToken";
+
 import { postComment } from "../../../services/HistoryApi";
 import infoFunctions from "./infoFunctions";
 
@@ -10,8 +14,9 @@ export default function CommentArea({
   reload,
   setReload,
 }) {
-  console.log(historyInfo?.Comment);
   const [comment, setComment] = useState([]);
+
+  const { profileData } = useContext(UserContext);
   const token = useToken();
 
   function newComment(e) {
@@ -26,6 +31,12 @@ export default function CommentArea({
         setComment("");
       })
       .catch();
+  }
+
+  function deleteComment() {
+    if (!token) return;
+
+    return;
   }
   return (
     <>
@@ -42,7 +53,14 @@ export default function CommentArea({
           </form>
           {historyInfo?.Comment.map((value, index) => (
             <Comment key={index}>
-              <span>{infoFunctions.countTimer(value)}</span>
+              <span>
+                {value.User.Profile[0].username === profileData.username ? (
+                  <RiChatDeleteFill className="icon" onClick={deleteComment} />
+                ) : (
+                  <></>
+                )}
+                {infoFunctions.countTimer(value)}
+              </span>
               <div>
                 <img src={value.User.Profile[0].photo_path} alt="profile" />
                 {value.User.Profile[0].username}
@@ -108,12 +126,20 @@ const Comment = styled.div`
   position: relative;
 
   span {
+    display: flex;
+    align-items: center;
     position: absolute;
     top: 0;
     right: 0;
     margin: 10px 10px 0 0;
     font-size: 0.7rem;
     font-weight: 800;
+  }
+
+  .icon {
+    margin: 0 10px 0 0;
+    cursor: pointer;
+    font-size: 0.8rem;
   }
 
   img {
