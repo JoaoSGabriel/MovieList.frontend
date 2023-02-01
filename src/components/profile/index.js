@@ -70,9 +70,13 @@ const ContentArea = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 20px 0 0 0;
+
+  @media screen and (max-width: 1366px) {
+    max-width: 1100px;
+  }
 `;
 
 const Area = styled.div`
   width: 48%;
-  height: 800px;
+  max-height: 800px;
 `;

@@ -51,4 +51,8 @@ const Wrappler = styled.div`
     font-weight: 500;
     margin: 0 0 10px 0;
   }
+
+  @media screen and (max-width: 1366px) {
+    max-width: 950px;
+  }
 `;

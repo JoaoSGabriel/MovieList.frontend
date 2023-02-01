@@ -32,9 +32,10 @@ export default function MediaCard({ info, style }) {
 }
 
 const Container = styled.div`
-  margin: 0 0 20px 0;
+  margin: 0 0 0px 0;
   cursor: pointer;
   background: none;
+
   img {
     width: 210px;
     height: 315px;
@@ -50,5 +51,16 @@ const Container = styled.div`
     overflow: hidden;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
+  }
+
+  @media screen and (max-width: 1366px) {
+    img {
+      width: 160px;
+      height: 240px;
+    }
+
+    h1 {
+      width: 160px;
+    }
   }
 `;

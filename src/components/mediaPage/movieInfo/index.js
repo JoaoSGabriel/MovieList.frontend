@@ -17,6 +17,7 @@ const Information = styled.div`
   width: 1075px;
   min-height: 260px;
   margin: 10px 0 0 30px;
+
   h1 {
     font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen,
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
@@ -44,5 +45,9 @@ const Information = styled.div`
     max-width: 900px;
     padding: 15px 0 0 0;
     transition: 0.2s;
+  }
+
+  @media screen and (max-width: 1366px) {
+    max-width: 950px;
   }
 `;

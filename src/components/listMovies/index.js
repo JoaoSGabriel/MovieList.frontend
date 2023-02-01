@@ -23,6 +23,10 @@ const Content = styled.div`
   max-width: 1440px;
   display: flex;
   justify-content: space-between;
+
+  @media screen and (max-width: 1366px) {
+    max-width: 1100px;
+  }
 `;
 
 const Movies = styled.div`

@@ -69,6 +69,12 @@ const Header = styled.div`
       color: rgb(61, 180, 242);
     }
   }
+
+  @media screen and (max-width: 1366px) {
+    span {
+      margin: 0 35px 10px 0;
+    }
+  }
 `;
 
 const Wrappler = styled.div`
@@ -87,6 +93,15 @@ const CastCard = styled.div`
   img {
     width: 100px;
     border-radius: 5px;
+  }
+
+  @media screen and (max-width: 1366px) {
+    width: 290px;
+    margin: 0 25px 25px 0;
+
+    img {
+      width: 80px;
+    }
   }
 `;
 

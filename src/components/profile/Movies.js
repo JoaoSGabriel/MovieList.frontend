@@ -5,7 +5,6 @@ import LoaderDiv from "../LoaderDiv";
 import MediaCard from "../MediaCard";
 
 export default function Movies({ token, profile }) {
-  console.log(profile);
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -32,7 +31,7 @@ export default function Movies({ token, profile }) {
         <MediaCard
           key={index}
           info={value}
-          style={{ margin: "20px 10px 20px 10px" }}
+          style={{ margin: "20px 20px 20px 0" }}
         />
       ));
     }
@@ -68,6 +67,7 @@ const Title = styled.div`
 const Favorits = styled.div`
   width: 100%;
   margin: 20px 0 0 0;
+  padding: 0 0 0 20px;
   display: flex;
   overflow-x: scroll;
   border-radius: 5px;

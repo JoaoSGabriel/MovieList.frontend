@@ -71,6 +71,14 @@ const Wrapper = styled.div`
     height: 53px;
     margin: 0 20px 0 0;
   }
+
+  @media screen and (max-width: 1366px) {
+    img {
+      width: 43px;
+      height: 43px;
+      margin: 0 15px 0 0;
+    }
+  }
 `;
 
 const ToggleArrow = styled.div`

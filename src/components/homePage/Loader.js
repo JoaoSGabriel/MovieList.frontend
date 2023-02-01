@@ -49,4 +49,15 @@ const Container = styled.div`
     background-size: 200% 100%;
     animation: 1.5s shine linear infinite;
   }
+
+  @media screen and (max-width: 1366px) {
+    div {
+      width: 160px;
+      height: 240px;
+    }
+
+    p {
+      width: 160px;
+    }
+  }
 `;

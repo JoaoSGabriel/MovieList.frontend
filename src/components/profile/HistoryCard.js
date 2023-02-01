@@ -103,12 +103,20 @@ const Wrappler = styled.div`
     width: 80px;
     height: 120px;
   }
+
+  @media screen and (max-width: 1366px) {
+    width: 100%;
+  }
 `;
 
 const Container = styled.div`
   width: 260px;
   display: flex;
   flex-direction: column;
+
+  @media screen and (max-width: 1366px) {
+    width: 100%;
+  }
 `;
 
 const InsideMenu = styled.div`

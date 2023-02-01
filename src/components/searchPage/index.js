@@ -50,4 +50,8 @@ const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   box-sizing: border-box;
+
+  @media screen and (max-width: 1366px) {
+    justify-content: center;
+  }
 `;

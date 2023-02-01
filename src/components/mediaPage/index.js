@@ -113,6 +113,10 @@ const Details = styled.div`
   justify-content: end;
   width: 100%;
   max-width: 1440px;
+
+  @media screen and (max-width: 1366px) {
+    max-width: 1300px;
+  }
 `;
 
 const Banner = styled.div`

@@ -70,6 +70,12 @@ const Header = styled.div`
       color: rgb(61, 180, 242);
     }
   }
+
+  @media screen and (max-width: 1366px) {
+    span {
+      margin: 0 35px 10px 0;
+    }
+  }
 `;
 
 const Wrappler = styled.div`
@@ -79,7 +85,7 @@ const Wrappler = styled.div`
 `;
 
 const CrewCard = styled.div`
-  width: 320px;
+  width: 290px;
   height: auto;
   background-color: #fafafa;
   margin: 0 30px 30px 0;
@@ -87,6 +93,16 @@ const CrewCard = styled.div`
 
   img {
     width: 100px;
+    border-radius: 5px;
+  }
+
+  @media screen and (max-width: 1366px) {
+    max-width: 950px;
+    margin: 0 25px 25px 0;
+
+    img {
+      width: 80px;
+    }
   }
 `;
 

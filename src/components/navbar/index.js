@@ -29,6 +29,10 @@ const Container = styled.div`
   z-index: 1;
   background: #2b2d42;
   color: #bcbedc;
+
+  @media screen and (max-width: 1366px) {
+    height: 65px;
+  }
 `;
 
 const Wrappler = styled.div`
@@ -37,7 +41,10 @@ const Wrappler = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 100%;
-  margin: 0 50px;
   max-width: 1440px;
   width: 100%;
+
+  @media screen and (max-width: 1366px) {
+    max-width: 1100px;
+  }
 `;

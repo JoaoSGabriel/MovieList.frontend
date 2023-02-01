@@ -4,6 +4,11 @@ export const List = styled.div`
   width: 100%;
   max-width: 1440px;
   margin: 40px 0 0 0;
+
+  @media screen and (max-width: 1366px) {
+    max-width: 1100px;
+    margin: 30px 0 0 0;
+  }
 `;
 
 export const Container = styled.div`

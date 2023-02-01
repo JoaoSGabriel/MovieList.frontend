@@ -70,6 +70,15 @@ const Profile = styled.div`
     left: 0px;
     bottom: 0px;
   }
+
+  @media screen and (max-width: 1366px) {
+    max-width: 1100px;
+
+    img {
+      width: 240px;
+      height: 240px;
+    }
+  }
 `;
 
 const EditButton = styled.div`

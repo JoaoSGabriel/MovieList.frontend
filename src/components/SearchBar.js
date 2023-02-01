@@ -43,12 +43,14 @@ const MainSearch = styled.div`
   position: relative;
   width: 1440px;
   margin: 30px auto 0 auto;
+
   .icon {
     position: absolute;
     left: 10px;
     top: 10px;
     font-size: 25px;
   }
+
   input {
     width: 600px;
     background: rgb(251, 251, 251);
@@ -65,6 +67,15 @@ const MainSearch = styled.div`
     :focus {
       border: 0 none;
       outline: 0;
+    }
+  }
+
+  @media screen and (max-width: 1366px) {
+    max-width: 1100px;
+    margin: 20px auto 0 auto;
+
+    input {
+      padding: 8px 16px 8px 40px;
     }
   }
 `;
