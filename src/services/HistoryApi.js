@@ -11,3 +11,17 @@ export async function getHistoryInfo(historyId) {
 
   return response.data;
 }
+
+export async function postLikeHistory(token, historyId) {
+  const response = await api.post(
+    `/history/like`,
+    { historyId },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  return response.data;
+}
