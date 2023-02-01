@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { BsSuitHeart, BsSuitHeartFill } from "react-icons/bs";
 import { FaRegComments } from "react-icons/fa";
 import { toast } from "react-toastify";
@@ -6,12 +5,17 @@ import styled from "styled-components";
 import useToken from "../../../hooks/useToken";
 import {
   deleteLikeHistory,
-  getHistoryInfo,
   postLikeHistory,
 } from "../../../services/HistoryApi";
 
-export default function InteractionArea({ info, reload, setReload }) {
-  const [historyInfo, setHistoryInfo] = useState([]);
+export default function InteractionArea({
+  info,
+  historyInfo,
+  reload,
+  setReload,
+  isComment,
+  setIsComment,
+}) {
   const token = useToken();
 
   function countComments() {
@@ -27,17 +31,6 @@ export default function InteractionArea({ info, reload, setReload }) {
     }
     return "";
   }
-
-  useEffect(() => {
-    const promisse = getHistoryInfo(info?.id);
-    promisse
-      .then((e) => {
-        setHistoryInfo(e);
-      })
-      .catch(() => {
-        setHistoryInfo([]);
-      });
-  }, [info, reload]);
 
   function setLike() {
     if (!token) return;
@@ -69,7 +62,12 @@ export default function InteractionArea({ info, reload, setReload }) {
     <Container>
       <Info>
         {countComments()}
-        <FaRegComments className="icon" />
+        <FaRegComments
+          className="icon"
+          onClick={() => {
+            setIsComment(!isComment);
+          }}
+        />
       </Info>
       <Info>
         {countLikes()}

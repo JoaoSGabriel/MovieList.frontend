@@ -1,12 +1,29 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
+import { getHistoryInfo } from "../../../services/HistoryApi";
 import infoFunctions from "./infoFunctions";
 
 import InteractionArea from "./InteractionArea";
+import CommentArea from "./CommentArea";
 
 export default function HistoryCard({ info, reload, setReload }) {
+  const [isComment, setIsComment] = useState(false);
+  const [historyInfo, setHistoryInfo] = useState([]);
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const promisse = getHistoryInfo(info?.id);
+    promisse
+      .then((e) => {
+        setHistoryInfo(e);
+      })
+      .catch(() => {
+        setHistoryInfo([]);
+      });
+  }, [info, reload]);
 
   function searcTitleName() {
     if (info?.type === "LIKED") {
@@ -45,19 +62,29 @@ export default function HistoryCard({ info, reload, setReload }) {
   }
 
   return (
-    <Wrappler>
-      <img src={infoFunctions.searchPosterPath(info)} alt="poster" />
-      <Container>
-        <InsideMenu>{infoFunctions.countTimer(info)}</InsideMenu>
-        {searcTitleName()}
-        <InteractionArea info={info} reload={reload} setReload={setReload} />
-      </Container>
-    </Wrappler>
+    <>
+      <Wrappler isComment={isComment}>
+        <img src={infoFunctions.searchPosterPath(info)} alt="poster" />
+        <Container isComment={isComment}>
+          <InsideMenu>{infoFunctions.countTimer(info)}</InsideMenu>
+          {searcTitleName()}
+          <InteractionArea
+            info={info}
+            historyInfo={historyInfo}
+            reload={reload}
+            setReload={setReload}
+            isComment={isComment}
+            setIsComment={setIsComment}
+          />
+        </Container>
+      </Wrappler>
+      <CommentArea isComment={isComment} />
+    </>
   );
 }
 
 const Wrappler = styled.div`
-  width: 340px;
+  width: ${({ isComment }) => (isComment ? "100%" : "340px")};
   height: 120px;
   border-radius: 5px;
   margin: 0 0 10px 0;
@@ -77,7 +104,7 @@ const Wrappler = styled.div`
 `;
 
 const Container = styled.div`
-  width: 260px;
+  width: ${({ isComment }) => (isComment ? "100%" : "260px")};
   display: flex;
   flex-direction: column;
   position: relative;
