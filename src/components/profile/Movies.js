@@ -19,6 +19,7 @@ export default function Movies({ token, profile }) {
         })
         .catch(() => {
           setMovies([]);
+          setLoading(false);
         });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

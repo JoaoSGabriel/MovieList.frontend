@@ -1,9 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { AiOutlineEdit } from "react-icons/ai";
 import styled from "styled-components";
+import UserContext from "../contexts/UserContext";
 
-export default function UserArea({ info, setIsEditing }) {
+export default function UserArea({ info, setIsEditing, username }) {
   const [isActive, setIsActive] = useState(false);
+  const { profileData } = useContext(UserContext);
+
+  function showEditButton() {
+    if (username !== profileData.username) return;
+    setIsActive(!isActive);
+  }
 
   function getImage() {
     if (info?.photo_path) {
@@ -15,8 +22,12 @@ export default function UserArea({ info, setIsEditing }) {
   return (
     <Background url={info?.backdrop_path}>
       <Profile
-        onMouseEnter={() => setIsActive(true)}
-        onMouseLeave={() => setIsActive(false)}
+        onMouseEnter={() => {
+          showEditButton();
+        }}
+        onMouseLeave={() => {
+          showEditButton();
+        }}
       >
         <img src={getImage()} alt="profile'" />
         <EditButton

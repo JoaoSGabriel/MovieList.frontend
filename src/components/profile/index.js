@@ -34,7 +34,11 @@ export default function ProfilePage() {
     <>
       {profile?.id ? (
         <>
-          <UserArea info={profile} setIsEditing={setIsEditing} />
+          <UserArea
+            info={profile}
+            setIsEditing={setIsEditing}
+            username={params.username}
+          />
           <Home>
             <ContentArea>
               <Area>

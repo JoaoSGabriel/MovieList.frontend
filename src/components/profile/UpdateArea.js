@@ -34,6 +34,7 @@ export default function UpdateArea({ info, isEditing, setIsEditing, token }) {
       })
       .catch(() => {
         toast("Ops! Algo deu errado com sua requisição");
+        setIsEditing(false);
       });
   }
 
