@@ -5,7 +5,7 @@ import useToken from "../../hooks/useToken";
 import { getProfile } from "../../services/ProfileApi";
 import Home from "../HomeStyle";
 import LoaderScreen from "../LoaderScreen";
-import History from "./History";
+import History from "./history";
 import Movies from "./Movies";
 import UpdateArea from "./UpdateArea";
 import UserArea from "./UserArea";

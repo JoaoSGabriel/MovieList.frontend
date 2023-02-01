@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { getAllHistory } from "../../services/HistoryApi";
+import { getAllHistory } from "../../../services/HistoryApi";
 import HistoryCard from "./HistoryCard";
 
 export default function History({ token, profile }) {
