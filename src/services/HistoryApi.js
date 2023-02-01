@@ -25,3 +25,13 @@ export async function postLikeHistory(token, historyId) {
 
   return response.data;
 }
+
+export async function deleteLikeHistory(token, likeId) {
+  const response = await api.delete(`/history/like?likeId=${likeId}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return response.data;
+}

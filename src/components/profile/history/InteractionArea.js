@@ -4,13 +4,15 @@ import { FaRegComments } from "react-icons/fa";
 import { toast } from "react-toastify";
 import styled from "styled-components";
 import useToken from "../../../hooks/useToken";
-import { getHistoryInfo, postLikeHistory } from "../../../services/HistoryApi";
+import {
+  deleteLikeHistory,
+  getHistoryInfo,
+  postLikeHistory,
+} from "../../../services/HistoryApi";
 
-export default function InteractionArea({ info }) {
+export default function InteractionArea({ info, reload, setReload }) {
   const [historyInfo, setHistoryInfo] = useState([]);
-  const [reload, setReload] = useState(false);
   const token = useToken();
-  console.log(info, historyInfo);
 
   function countComments() {
     if (historyInfo.Comment?.length > 0) {
@@ -50,6 +52,19 @@ export default function InteractionArea({ info }) {
       });
   }
 
+  function removeLike() {
+    if (!token) return;
+    const promisse = deleteLikeHistory(token, info.Like[0].id);
+    promisse
+      .then(() => {
+        toast("Você removeu sua curtida");
+        setReload(!reload);
+      })
+      .catch(() => {
+        toast("Ops! Algo deu errado com sua requisição");
+      });
+  }
+
   return (
     <Container>
       <Info>
@@ -59,7 +74,11 @@ export default function InteractionArea({ info }) {
       <Info>
         {countLikes()}
         {info?.Like[0] ? (
-          <BsSuitHeartFill className="icon" style={{ color: "red" }} />
+          <BsSuitHeartFill
+            className="icon"
+            style={{ color: "red" }}
+            onClick={removeLike}
+          />
         ) : (
           <BsSuitHeart className="icon" onClick={setLike} />
         )}

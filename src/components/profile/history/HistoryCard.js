@@ -5,7 +5,7 @@ import infoFunctions from "./infoFunctions";
 
 import InteractionArea from "./InteractionArea";
 
-export default function HistoryCard({ info }) {
+export default function HistoryCard({ info, reload, setReload }) {
   const navigate = useNavigate();
 
   function searcTitleName() {
@@ -50,7 +50,7 @@ export default function HistoryCard({ info }) {
       <Container>
         <InsideMenu>{infoFunctions.countTimer(info)}</InsideMenu>
         {searcTitleName()}
-        <InteractionArea info={info} />
+        <InteractionArea info={info} reload={reload} setReload={setReload} />
       </Container>
     </Wrappler>
   );

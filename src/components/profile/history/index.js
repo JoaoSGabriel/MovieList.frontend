@@ -5,6 +5,7 @@ import HistoryCard from "./HistoryCard";
 
 export default function History({ profile }) {
   const [history, setHistory] = useState([]);
+  const [reload, setReload] = useState(false);
 
   useEffect(() => {
     if (profile?.username) {
@@ -18,7 +19,7 @@ export default function History({ profile }) {
         });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [profile]);
+  }, [profile, reload]);
 
   return (
     <>
@@ -27,7 +28,12 @@ export default function History({ profile }) {
         <>
           <Wrappler>
             {history.map((value, index) => (
-              <HistoryCard key={index} info={value} />
+              <HistoryCard
+                key={index}
+                info={value}
+                reload={reload}
+                setReload={setReload}
+              />
             ))}
           </Wrappler>
         </>
