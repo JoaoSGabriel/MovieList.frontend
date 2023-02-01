@@ -5,8 +5,12 @@ import { RiChatDeleteFill } from "react-icons/ri";
 import UserContext from "../../contexts/UserContext";
 import useToken from "../../../hooks/useToken";
 
-import { postComment } from "../../../services/HistoryApi";
+import {
+  deleteCommentHistory,
+  postComment,
+} from "../../../services/HistoryApi";
 import infoFunctions from "./infoFunctions";
+import { toast } from "react-toastify";
 
 export default function CommentArea({
   isComment,
@@ -30,12 +34,23 @@ export default function CommentArea({
         setReload(!reload);
         setComment("");
       })
-      .catch();
+      .catch(() => {
+        toast("Ops! Algo deu errado com sua requisição");
+      });
   }
 
-  function deleteComment() {
+  function deleteComment(commentId) {
     if (!token) return;
 
+    const promisse = deleteCommentHistory(token, commentId);
+    promisse
+      .then(() => {
+        setReload(!reload);
+        toast("Comentário deletado");
+      })
+      .catch(() => {
+        toast("Ops! Algo deu errado com sua requisição");
+      });
     return;
   }
   return (
@@ -55,14 +70,25 @@ export default function CommentArea({
             <Comment key={index}>
               <span>
                 {value.User.Profile[0].username === profileData.username ? (
-                  <RiChatDeleteFill className="icon" onClick={deleteComment} />
+                  <RiChatDeleteFill
+                    className="icon"
+                    onClick={() => {
+                      deleteComment(value.id);
+                    }}
+                  />
                 ) : (
                   <></>
                 )}
                 {infoFunctions.countTimer(value)}
               </span>
               <div>
-                <img src={value.User.Profile[0].photo_path} alt="profile" />
+                <img
+                  src={
+                    value.User.Profile[0].photo_path ||
+                    "https://media.istockphoto.com/id/1209654046/vector/user-avatar-profile-icon-black-vector-illustration.jpg?s=612x612&w=0&k=20&c=EOYXACjtZmZQ5IsZ0UUp1iNmZ9q2xl1BD1VvN6tZ2UI="
+                  }
+                  alt="profile"
+                />
                 {value.User.Profile[0].username}
               </div>
               {value.comment}

@@ -49,3 +49,13 @@ export async function deleteLikeHistory(token, likeId) {
 
   return response.data;
 }
+
+export async function deleteCommentHistory(token, commentId) {
+  const response = await api.delete(`/history/comment?commentId=${commentId}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return response.data;
+}
