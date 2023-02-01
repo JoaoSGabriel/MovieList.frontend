@@ -30,8 +30,8 @@ export async function deleteMovieFavorit(token, favoritId) {
   return response.data;
 }
 
-export async function getAllFavorits(token) {
-  const response = await api.get(`/favorits/all`, {
+export async function getAllFavorits(token, username) {
+  const response = await api.get(`/favorits/all?username=${username}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

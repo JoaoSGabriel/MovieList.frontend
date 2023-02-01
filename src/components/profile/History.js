@@ -8,7 +8,7 @@ export default function History({ token, profile }) {
 
   useEffect(() => {
     if (!token) return;
-    const promisse = getAllHistory(token);
+    const promisse = getAllHistory(token, profile.username);
     promisse
       .then((e) => {
         setHistory(e);

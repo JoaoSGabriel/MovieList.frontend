@@ -1,7 +1,7 @@
 import api from "./api";
 
-export async function getAllHistory(token) {
-  const response = await api.get("/history", {
+export async function getAllHistory(token, username) {
+  const response = await api.get(`/history?username=${username}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

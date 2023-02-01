@@ -5,13 +5,14 @@ import LoaderDiv from "../LoaderDiv";
 import MediaCard from "../MediaCard";
 
 export default function Movies({ token, profile }) {
+  console.log(profile);
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (token) {
       setLoading(true);
-      const promisse = getAllFavorits(token);
+      const promisse = getAllFavorits(token, profile.username);
       promisse
         .then((e) => {
           setMovies(e);
