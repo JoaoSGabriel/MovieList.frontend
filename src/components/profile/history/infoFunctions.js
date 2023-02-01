@@ -3,7 +3,14 @@ function countTimer(info) {
   const end = new Date();
   const totalDiff = new Date(end - start);
 
-  if (totalDiff.getUTCHours() < 1 && totalDiff.getUTCMinutes() < 6) {
+  const diffInMs = new Date(end) - new Date(start);
+  const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
+
+  if (diffInDays === 1) {
+    return `Há ${diffInDays} dia atrás`;
+  } else if (diffInDays > 1) {
+    return `Há ${diffInDays} dias atrás`;
+  } else if (totalDiff.getUTCHours() < 1 && totalDiff.getUTCMinutes() < 6) {
     return "Agora mesmo";
   } else if (totalDiff.getUTCHours() < 1) {
     let diff = totalDiff.getUTCMinutes() + "min ";
@@ -17,11 +24,6 @@ function countTimer(info) {
     let diff = totalDiff.getUTCHours() + " horas ";
 
     return `Há ${diff} atrás`;
-  } else if (totalDiff.getUTCHours() >= 23) {
-    const diffInMs = new Date(end) - new Date(start);
-    const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
-
-    return `Há ${diffInDays} dia(s) atrás`;
   }
 
   return "empty";
