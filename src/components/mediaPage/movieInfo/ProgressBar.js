@@ -12,7 +12,7 @@ export default function ProgressBar({ completed }) {
       <Container>
         <Filler bckgColor={seeValue()} value={completed}></Filler>
       </Container>
-      <Value>{completed}</Value>
+      <Value>{completed?.toFixed(2)}</Value>
     </Wrappler>
   );
 }
@@ -20,7 +20,7 @@ export default function ProgressBar({ completed }) {
 const Wrappler = styled.div`
   display: flex;
   align-items: center;
-  margin: 0 0 15px 0;
+  margin: 10px 0 15px 0;
 `;
 
 const Container = styled.div`

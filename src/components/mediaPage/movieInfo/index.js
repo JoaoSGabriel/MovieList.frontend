@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import ProgressBar from "./ProgressBar";
+import Rating from "./Rating";
 
 export default function MovieInfo({ movieDetails }) {
   return (
@@ -7,8 +8,13 @@ export default function MovieInfo({ movieDetails }) {
       <h1>{movieDetails.title}</h1>
       {movieDetails.tagline ? <h3>"{movieDetails.tagline}"</h3> : <></>}
       <h2>{movieDetails.overview}</h2>
-      <h3>IMDB: Pontuação</h3>
-      <ProgressBar completed={movieDetails.vote_average} />
+      <RatingArea>
+        <div>
+          <h3>IMDB: Pontuação</h3>
+          <ProgressBar completed={movieDetails.vote_average} />
+        </div>
+        <Rating />
+      </RatingArea>
     </Information>
   );
 }
@@ -50,4 +56,9 @@ const Information = styled.div`
   @media screen and (max-width: 1366px) {
     max-width: 950px;
   }
+`;
+
+const RatingArea = styled.div`
+  width: 100%;
+  display: flex;
 `;
