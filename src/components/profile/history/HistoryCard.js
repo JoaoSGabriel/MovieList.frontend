@@ -50,7 +50,7 @@ export default function HistoryCard({ info }) {
       <Container>
         <InsideMenu>{infoFunctions.countTimer(info)}</InsideMenu>
         {searcTitleName()}
-        <InteractionArea />
+        <InteractionArea info={info} />
       </Container>
     </Wrappler>
   );

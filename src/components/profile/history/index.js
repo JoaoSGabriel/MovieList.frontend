@@ -3,21 +3,22 @@ import styled from "styled-components";
 import { getAllHistory } from "../../../services/HistoryApi";
 import HistoryCard from "./HistoryCard";
 
-export default function History({ token, profile }) {
+export default function History({ profile }) {
   const [history, setHistory] = useState([]);
 
   useEffect(() => {
-    if (!token) return;
-    const promisse = getAllHistory(token, profile.username);
-    promisse
-      .then((e) => {
-        setHistory(e);
-      })
-      .catch(() => {
-        setHistory([]);
-      });
+    if (profile?.username) {
+      const promisse = getAllHistory(profile.username);
+      promisse
+        .then((e) => {
+          setHistory(e);
+        })
+        .catch(() => {
+          setHistory([]);
+        });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [token]);
+  }, [profile]);
 
   return (
     <>
