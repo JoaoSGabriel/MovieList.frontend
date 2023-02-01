@@ -3,7 +3,7 @@ import {
   deleteMovieWatched,
   postMovieWatched,
   searchMovieWatched,
-} from "../../../services/WatchedFunctional";
+} from "../../../services/WatchedApi";
 import { FaEye } from "react-icons/fa";
 import { toast } from "react-toastify";
 

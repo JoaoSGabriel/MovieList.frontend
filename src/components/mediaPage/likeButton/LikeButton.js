@@ -7,7 +7,7 @@ import useMovieFavorit from "../../../hooks/API/useMovieFavorit";
 import {
   deleteMovieFavorit,
   searchMovieFavorit,
-} from "../../../services/FavoritFunctional";
+} from "../../../services/FavoritApi";
 
 export default function LikeButton({ movieDetails, token }) {
   const { postFavorit } = useMovieFavorit();

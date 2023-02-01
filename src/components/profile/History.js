@@ -16,6 +16,7 @@ export default function History({ token, profile }) {
       .catch(() => {
         setHistory([]);
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token]);
 
   return (

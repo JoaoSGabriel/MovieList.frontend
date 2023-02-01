@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import useToken from "../../hooks/useToken";
-import { getAllPlanning } from "../../services/PlanningFunctional";
+import { getAllPlanning } from "../../services/PlanningApi";
 import Loader from "../homePage/Loader";
 import MediaCard from "../MediaCard";
 

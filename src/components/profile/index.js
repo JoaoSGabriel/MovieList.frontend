@@ -28,6 +28,7 @@ export default function ProfilePage() {
           setProfile([]);
         });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params, isEditing]);
 
   return (

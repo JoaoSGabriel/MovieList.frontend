@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { getAllFavorits } from "../../services/FavoritFunctional";
+import { getAllFavorits } from "../../services/FavoritApi";
 import LoaderDiv from "../LoaderDiv";
 import MediaCard from "../MediaCard";
 

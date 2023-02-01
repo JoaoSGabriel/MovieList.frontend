@@ -5,7 +5,7 @@ import {
   deleteMoviePlanning,
   postMoviePlanning,
   searchMoviePlanning,
-} from "../../../services/PlanningFunctional";
+} from "../../../services/PlanningApi";
 
 export default function PlanningButton({ movieDetails, token }) {
   const [planning, setPlanning] = useState([]);

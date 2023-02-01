@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import useToken from "../../hooks/useToken";
-import { getAllWatched } from "../../services/WatchedFunctional";
+import { getAllWatched } from "../../services/WatchedApi";
 import Loader from "../homePage/Loader";
 import MediaCard from "../MediaCard";
 
