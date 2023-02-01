@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { BsSuitHeart, BsSuitHeartFill } from "react-icons/bs";
 import { FaRegComments } from "react-icons/fa";
 import { toast } from "react-toastify";
@@ -7,6 +8,7 @@ import {
   deleteLikeHistory,
   postLikeHistory,
 } from "../../../services/HistoryApi";
+import UserContext from "../../contexts/UserContext";
 
 export default function InteractionArea({
   info,
@@ -16,7 +18,19 @@ export default function InteractionArea({
   isComment,
   setIsComment,
 }) {
+  const { userData } = useContext(UserContext);
   const token = useToken();
+
+  function checkLike() {
+    if (historyInfo?.Like) {
+      const liked = historyInfo.Like.filter(
+        (value) => value.userId === userData.user.id
+      );
+
+      if (liked.length > 0) return liked[0].id;
+      return 0;
+    }
+  }
 
   function countComments() {
     if (historyInfo.Comment?.length > 0) {
@@ -47,7 +61,7 @@ export default function InteractionArea({
 
   function removeLike() {
     if (!token) return;
-    const promisse = deleteLikeHistory(token, info.Like[0].id);
+    const promisse = deleteLikeHistory(token, checkLike());
     promisse
       .then(() => {
         toast("Você removeu sua curtida");
@@ -71,7 +85,7 @@ export default function InteractionArea({
       </Info>
       <Info>
         {countLikes()}
-        {info?.Like[0] ? (
+        {checkLike() > 0 ? (
           <BsSuitHeartFill
             className="icon"
             style={{ color: "red" }}

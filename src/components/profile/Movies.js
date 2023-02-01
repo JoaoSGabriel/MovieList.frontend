@@ -23,7 +23,7 @@ export default function Movies({ token, profile }) {
         });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [profile]);
 
   function renderMovies() {
     if (movies[0]) {
