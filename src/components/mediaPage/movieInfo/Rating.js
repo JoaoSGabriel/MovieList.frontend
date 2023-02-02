@@ -5,6 +5,8 @@ import styled from "styled-components";
 import useToken from "../../../hooks/useToken";
 import { getRate, postRate, deleteRate } from "../../../services/RatedApi";
 
+import { ImStarEmpty, ImStarFull, ImStarHalf } from "react-icons/im";
+
 export default function Rating({ movieDetails }) {
   const [value, setValue] = useState(0);
   const [rateDetails, setRateDetails] = useState([]);
@@ -26,8 +28,31 @@ export default function Rating({ movieDetails }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movieDetails, reload]);
 
-  function newRate(e) {
-    e.preventDefault();
+  function countStars() {
+    let total = 5;
+    let stars = rateDetails?.rate / 2;
+    const response = [];
+
+    const filled = <ImStarFull />;
+    const half = <ImStarHalf />;
+    const empty = <ImStarEmpty />;
+
+    while (total > 0) {
+      if (stars > 0 && stars < 1) {
+        response.push(half);
+        stars--;
+      } else if (stars > 0) {
+        response.push(filled);
+        stars--;
+      } else if (stars <= 0 && total > 0) {
+        response.push(empty);
+      }
+      total--;
+    }
+    return response;
+  }
+
+  function newRate() {
     if (value === 0) {
       toast("Escolha uma nota entre 0.5 e 10");
       return;
@@ -69,6 +94,7 @@ export default function Rating({ movieDetails }) {
           {rateDetails?.id ? (
             <Rate>
               <h3>Sua nota: {rateDetails?.rate}</h3>
+              <Stars>{countStars()}</Stars>
               <Button onClick={delRate}>Excluir nota</Button>
             </Rate>
           ) : (
@@ -148,7 +174,27 @@ const Button = styled.div`
   cursor: pointer;
 `;
 
+const Stars = styled.div`
+  font-size: 1.5rem;
+  color: #f7c50c;
+
+  margin: 5px 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const Rate = styled.div`
-  width: 100%;
+  width: 200px;
   height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h3 {
+    text-align: center;
+  }
 `;
