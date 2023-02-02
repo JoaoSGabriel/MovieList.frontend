@@ -1,7 +1,7 @@
 import api from "./api";
 
-export async function deleteRate(token, rateId) {
-  const response = await api.delete(`/rated?rateId=${rateId}`, {
+export async function getRate(token, tmdbMovieId) {
+  const response = await api.get(`/rated?tmdbMovieId=${tmdbMovieId}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -20,8 +20,8 @@ export async function postRate(token, body) {
   return response.data;
 }
 
-export async function getRate(token, tmdbMovieId) {
-  const response = await api.get(`/rated?tmdbMovieId=${tmdbMovieId}`, {
+export async function deleteRate(token, rateId) {
+  const response = await api.delete(`/rated?rateId=${rateId}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

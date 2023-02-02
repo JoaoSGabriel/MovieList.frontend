@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import styled from "styled-components";
 
 import useToken from "../../../hooks/useToken";
-import { getRate, postRate } from "../../../services/RatedApi";
-import { toast } from "react-toastify";
+import { getRate, postRate, deleteRate } from "../../../services/RatedApi";
 
 export default function Rating({ movieDetails }) {
-  const [value, setValue] = useState(0.5);
+  const [value, setValue] = useState(0);
   const [rateDetails, setRateDetails] = useState([]);
+  const [reload, setReload] = useState(false);
 
   const token = useToken();
 
@@ -17,41 +18,44 @@ export default function Rating({ movieDetails }) {
       promisse
         .then((e) => {
           setRateDetails(e);
-          setValue(e.rated);
         })
         .catch(() => {
           setRateDetails([]);
         });
     }
-  }, [movieDetails]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [movieDetails, reload]);
 
   function newRate(e) {
     e.preventDefault();
-    if (value < 0.5 || value > 10) {
-      toast("Digite uma nota entre 0.5 e 10");
+    if (value === 0) {
+      toast("Escolha uma nota entre 0.5 e 10");
       return;
     }
 
-    let src;
-    if (movieDetails?.poster_path) {
-      src = `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`;
-    } else {
-      src =
-        "https://t3.ftcdn.net/jpg/04/34/72/82/360_F_434728286_OWQQvAFoXZLdGHlObozsolNeuSxhpr84.jpg";
-    }
-
     const body = {
-      tmdbTitle: movieDetails.title,
       tmdbMovieId: movieDetails.id,
-      tmdbPoster_path: src,
-      rated: value,
-      rateId: value?.id,
+      rate: value,
     };
 
     const promisse = postRate(token, body);
     promisse
       .then(() => {
         toast("Nova nota selecionada");
+        setReload(!reload);
+      })
+      .catch(() => {
+        toast("Ops! Não foi possível salvar sua nota");
+      });
+  }
+
+  function delRate() {
+    if (!rateDetails?.id) return;
+    const promisse = deleteRate(token, rateDetails.id);
+    promisse
+      .then(() => {
+        setReload(!reload);
+        toast("Avaliação excluída");
       })
       .catch(() => {
         toast("Ops! Não foi possível salvar sua nota");
@@ -63,7 +67,10 @@ export default function Rating({ movieDetails }) {
       {token ? (
         <Wrappler>
           {rateDetails?.id ? (
-            <h3>Sua nota: {rateDetails?.rated}</h3>
+            <Rate>
+              <h3>Sua nota: {rateDetails?.rate}</h3>
+              <Button onClick={delRate}>Excluir nota</Button>
+            </Rate>
           ) : (
             <>
               <h3>Escolha sua nota: {value}</h3>
@@ -129,11 +136,19 @@ const Wrappler = styled.div`
 const Button = styled.div`
   width: 100px;
   height: 25px;
+  border-radius: 3px;
+  margin: 5px 0 0 0;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
   background: rgb(0, 153, 0);
-  border-radius: 3px;
   color: rgb(255, 255, 255);
   cursor: pointer;
+`;
+
+const Rate = styled.div`
+  width: 100%;
+  height: 100%;
 `;
