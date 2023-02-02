@@ -31,7 +31,6 @@ const Wrappler = styled.div`
   width: 120px;
   height: 35px;
   padding: 0 20px;
-  background-color: green;
   display: flex;
   align-items: center;
   justify-content: space-between;

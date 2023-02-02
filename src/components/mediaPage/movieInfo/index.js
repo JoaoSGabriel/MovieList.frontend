@@ -13,7 +13,7 @@ export default function MovieInfo({ movieDetails }) {
           <h3>IMDB: Pontuação</h3>
           <ProgressBar completed={movieDetails.vote_average} />
         </div>
-        <Rating />
+        <Rating movieDetails={movieDetails} />
       </RatingArea>
     </Information>
   );
@@ -22,6 +22,7 @@ export default function MovieInfo({ movieDetails }) {
 const Information = styled.div`
   width: 1075px;
   min-height: 260px;
+  padding: 0 0 10px 0;
   margin: 10px 0 0 30px;
 
   h1 {
