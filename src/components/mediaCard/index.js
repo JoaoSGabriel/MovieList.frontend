@@ -30,13 +30,12 @@ export default function MediaCard({ info, style }) {
 
   return (
     <Container
-      onClick={seeMore}
       style={style}
       onMouseEnter={() => setIsActive(true)}
       onMouseLeave={() => setIsActive(false)}
     >
-      <Buttons isActive={isActive} />
-      <img src={contentImage()} alt="loaded Banner" />
+      <Buttons isActive={isActive} info={info} />
+      <img src={contentImage()} alt="loaded Banner" onClick={seeMore} />
       {info?.tmdbTitle ? <h1>{info?.tmdbTitle}</h1> : <h1>{info?.title}</h1>}
     </Container>
   );
@@ -44,7 +43,6 @@ export default function MediaCard({ info, style }) {
 
 const Container = styled.div`
   margin: 0 0 0px 0;
-  cursor: pointer;
   background: none;
   position: relative;
 
@@ -52,6 +50,7 @@ const Container = styled.div`
     width: 210px;
     height: 315px;
     border-radius: 4px;
+    cursor: pointer;
   }
   h1 {
     width: 210px;
