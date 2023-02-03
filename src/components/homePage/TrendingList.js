@@ -25,7 +25,7 @@ export default function TrendingList({ children }) {
       ) : (
         <Container>
           {movieList.map((value, index) => (
-            <MediaCard key={index} info={value} />
+            <MediaCard key={index} info={value} buttons={true} />
           ))}
         </Container>
       )}
