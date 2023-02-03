@@ -19,7 +19,10 @@ export default function TrendingList({ children }) {
 
   return (
     <List>
-      <Text>{children}</Text>
+      <Text>
+        <h1>Tendências da semana</h1>
+        <h2>Ver mais</h2>
+      </Text>
       {trendingLoading ? (
         <Loader />
       ) : (

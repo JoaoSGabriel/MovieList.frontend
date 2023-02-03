@@ -5,7 +5,7 @@ import MediaCard from "../mediaCard/index";
 import { Container, List, Text } from "./ListStyle";
 import Loader from "./Loader";
 
-export default function RatedList({ children }) {
+export default function RatedList() {
   const [movieList, setMovieList] = useState([]);
   const { getRated, ratedLoading } = useRatedMovie();
 
@@ -19,7 +19,10 @@ export default function RatedList({ children }) {
 
   return (
     <List>
-      <Text>{children}</Text>
+      <Text>
+        <h1>Mais populares</h1>
+        <h2>Ver mais</h2>
+      </Text>
       {ratedLoading ? (
         <Loader />
       ) : (

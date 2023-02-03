@@ -19,7 +19,10 @@ export default function UpcomingList({ children }) {
 
   return (
     <List>
-      <Text>{children}</Text>
+      <Text>
+        <h1>Nos cinemas</h1>
+        <h2>Ver mais</h2>
+      </Text>
       {upcomingLoading ? (
         <Loader />
       ) : (
