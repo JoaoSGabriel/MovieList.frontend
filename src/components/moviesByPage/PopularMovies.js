@@ -31,7 +31,9 @@ export default function PopularMovies() {
       count.push(i);
     }
 
-    return count.map((index) => <Loader key={index} />);
+    return count.map((index) => (
+      <Loader key={index} style={{ margin: "0 30px 20px 0" }} />
+    ));
   }
 
   return (

@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export default function Loader() {
+export default function Loader({ style }) {
   return (
-    <Wrappler>
+    <Wrappler style={style}>
       <Container>
         <div></div>
         <p></p>
