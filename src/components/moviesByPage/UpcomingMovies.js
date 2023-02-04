@@ -36,7 +36,7 @@ export default function UpcomingMovies() {
           ))}
         </Container>
       </Home>
-      <PageNumber />
+      <PageNumber path={"upcoming"} />
     </>
   );
 }

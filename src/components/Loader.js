@@ -1,15 +1,12 @@
 import styled from "styled-components";
 
 export default function Loader() {
-  const count = [1, 2, 3, 4, 5, 6];
   return (
     <Wrappler>
-      {count.map((index) => (
-        <Container key={index}>
-          <div></div>
-          <p></p>
-        </Container>
-      ))}
+      <Container>
+        <div></div>
+        <p></p>
+      </Container>
     </Wrappler>
   );
 }

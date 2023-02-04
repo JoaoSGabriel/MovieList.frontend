@@ -4,11 +4,11 @@ import styled from "styled-components";
 import ReactPaginate from "react-paginate";
 import { BiRightArrow, BiLeftArrow } from "react-icons/bi";
 
-export default function PageNumber() {
+export default function PageNumber({ path }) {
   const navigate = useNavigate();
 
   function handlePageClick(event) {
-    navigate(`/movies/trending/${event.selected + 1}`);
+    navigate(`/movies/${path}/${event.selected + 1}`);
   }
 
   return (
@@ -20,7 +20,6 @@ export default function PageNumber() {
         pageCount={50}
         previousLabel={<BiLeftArrow />}
         disableInitialCallback={true}
-        renderOnZeroPageCount={true}
         containerClassName={"pagination"}
         subContainerClassName={"pages pagination"}
         activeClassName={"active"}

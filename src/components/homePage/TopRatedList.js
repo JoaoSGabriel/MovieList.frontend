@@ -4,7 +4,7 @@ import useRatedMovie from "../../hooks/apiUtils/useRatedMovies";
 
 import MediaCard from "../mediaCard/index";
 import { Container, List, Text } from "./ListStyle";
-import Loader from "./Loader";
+import Loader from "../Loader";
 
 export default function RatedList() {
   const [movieList, setMovieList] = useState([]);

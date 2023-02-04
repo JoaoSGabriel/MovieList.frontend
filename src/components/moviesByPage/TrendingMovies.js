@@ -36,7 +36,7 @@ export default function TrendingMovies() {
           ))}
         </Container>
       </Home>
-      <PageNumber />
+      <PageNumber path={"trending"} />
     </>
   );
 }

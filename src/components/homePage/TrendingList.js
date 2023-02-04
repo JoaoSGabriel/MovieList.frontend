@@ -4,7 +4,7 @@ import useTrendingMovie from "../../hooks/apiUtils/useTrendingMovies";
 
 import MediaCard from "../mediaCard/index";
 import { Container, List, Text } from "./ListStyle";
-import Loader from "./Loader";
+import Loader from "../Loader";
 
 export default function TrendingList({ children }) {
   const [movieList, setMovieList] = useState([]);

@@ -4,7 +4,7 @@ import useUpcomingMovie from "../../hooks/apiUtils/useUpcomingMovies";
 
 import MediaCard from "../mediaCard/index";
 import { Container, List, Text } from "./ListStyle";
-import Loader from "./Loader";
+import Loader from "../Loader";
 
 export default function UpcomingList({ children }) {
   const [movieList, setMovieList] = useState([]);
