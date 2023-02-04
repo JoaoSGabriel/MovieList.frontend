@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import useUpcomingMovie from "../../hooks/apiUtils/useUpcomingMovies";
 
 import MediaCard from "../mediaCard/index";
@@ -8,6 +9,8 @@ import Loader from "./Loader";
 export default function UpcomingList({ children }) {
   const [movieList, setMovieList] = useState([]);
   const { getUpcoming, upcomingLoading } = useUpcomingMovie();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const promisse = getUpcoming();
@@ -21,7 +24,13 @@ export default function UpcomingList({ children }) {
     <List>
       <Text>
         <h1>Nos cinemas</h1>
-        <h2>Ver mais</h2>
+        <h2
+          onClick={() => {
+            navigate("/movies/upcoming/1");
+          }}
+        >
+          Ver mais
+        </h2>
       </Text>
       {upcomingLoading ? (
         <Loader />

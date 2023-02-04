@@ -5,16 +5,16 @@ import Home from "../HomeStyle";
 import PageNumber from "./PageNumber";
 import MediaCard from "../mediaCard";
 
-import { getTrendingList } from "../../services/TMDB-api";
+import { getUpcomingList } from "../../services/TMDB-api";
 import { Container, Text } from "./MoviesPageStyles";
 
-export default function TrendingMovies() {
+export default function UpcomingMovies() {
   const [movies, setMovies] = useState([]);
 
   const params = useParams();
 
   useEffect(() => {
-    const promisse = getTrendingList(params.page);
+    const promisse = getUpcomingList(params.page);
     promisse.then((p) => {
       setMovies(p.results);
     });
@@ -25,7 +25,7 @@ export default function TrendingMovies() {
     <>
       <Home>
         <Container>
-          <Text>Tendências da semana</Text>
+          <Text>Nos cinemas</Text>
           {movies.map((value, index) => (
             <MediaCard
               key={index}

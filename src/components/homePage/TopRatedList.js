@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import useRatedMovie from "../../hooks/apiUtils/useRatedMovies";
 
 import MediaCard from "../mediaCard/index";
@@ -8,6 +9,8 @@ import Loader from "./Loader";
 export default function RatedList() {
   const [movieList, setMovieList] = useState([]);
   const { getRated, ratedLoading } = useRatedMovie();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const promisse = getRated();
@@ -21,7 +24,13 @@ export default function RatedList() {
     <List>
       <Text>
         <h1>Mais populares</h1>
-        <h2>Ver mais</h2>
+        <h2
+          onClick={() => {
+            navigate("/movies/popular/1");
+          }}
+        >
+          Ver mais
+        </h2>
       </Text>
       {ratedLoading ? (
         <Loader />
