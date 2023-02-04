@@ -20,6 +20,7 @@ import { UserProvider } from "./components/contexts/UserContext";
 
 import useToken from "./hooks/useToken";
 import ListMovies from "./pages/Dashboard/ListMovies";
+import TrendingMovies from "./components/moviesByPage/TrendingMovies";
 
 function App() {
   return (
@@ -65,6 +66,7 @@ function App() {
                 </ProtectedRouteGuard>
               }
             />
+            <Route path="/movies/trending/:page" element={<TrendingMovies />} />
           </Routes>
         </Router>
       </UserProvider>

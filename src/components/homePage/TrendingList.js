@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import useTrendingMovie from "../../hooks/apiUtils/useTrendingMovies";
 
 import MediaCard from "../mediaCard/index";
@@ -7,7 +8,10 @@ import Loader from "./Loader";
 
 export default function TrendingList({ children }) {
   const [movieList, setMovieList] = useState([]);
+
   const { getTrending, trendingLoading } = useTrendingMovie();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const promisse = getTrending();
@@ -21,7 +25,13 @@ export default function TrendingList({ children }) {
     <List>
       <Text>
         <h1>Tendências da semana</h1>
-        <h2>Ver mais</h2>
+        <h2
+          onClick={() => {
+            navigate("/movies/trending/1");
+          }}
+        >
+          Ver mais
+        </h2>
       </Text>
       {trendingLoading ? (
         <Loader />

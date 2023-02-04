@@ -1,7 +1,7 @@
 import api from "./api";
 
-export async function getTrendingList() {
-  const response = await api.get("/movies/toptrendig");
+export async function getTrendingList(page) {
+  const response = await api.get(`/movies/toptrendig?${page}`);
 
   return response.data;
 }
