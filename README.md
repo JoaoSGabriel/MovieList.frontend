@@ -40,7 +40,7 @@ Algumas das tecnologias utilizadas para desenvolvimento deste projeto:
 1. Faça um clone desse repositório
 2. Instale as dependências com o comando:
 <code>NPM i</code>
-3. Inicie o backend na porta 4000 <a href="blank">(saiba mais)</a>
+3. Inicie o backend na porta 4000 <a href="https://github.com/JoaoSGabriel/MovieList.Backend/blob/main/README.md">(saiba mais)</a>
 4. Inicie o projeto com o comando:
 <code>NPM start</code>
 
