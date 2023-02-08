@@ -1,40 +1,47 @@
 # Movielist
 
-An easy way to follow your daily habits. Track your habits to know how long you can keep complete specific habits and to charge you this. Also, you can know all the time what's the habit you need complete today.
+![Screenshot from 2023-02-06 15-25-22](https://user-images.githubusercontent.com/102863343/217061442-ee0d5e9d-e83b-45ba-902f-5ab7316a7a17.png)
 
-<a href="http://18.206.126.112/">Você pode acessar por aqui!</a>
+Uma ótima forma de catalogar os seus filmes! O aplicativo ideal para você juntar com seus amigos e deixar catalogado os seus filmes favoritos, os ja assistidos e os que planeja assistir!
 
-## About
-Below are the implemented features:
-- Sign up
-- Sign in
-- Create habits and select when you need complete that habit
-- List your habits for today
-- List all your habits
-- Delete a habit
-- Mark and unmark a habit as done
+Você pode acessar por <a href="http://18.206.126.112/">aqui!</a>
 
-By using this app any user can track it any kind of habits.
+## Sobre
+Sem criar conta você poderá:
+- ver a lista de filmes em cada uma das categorias: mais comentados, mais populares, em lançamento;
+- expandir cada uma dessas listas, e navegar por um carrossel de páginas;
+- acessar a página do filme e ver detalhes (Titúlo, sinopse, pontuação IMDB, atores, equipe técnica, e mais...);
+- procurar filmes pelo título;
+- criar conta.
 
-## Technologies
-The following tools and frameworks were used in the construction of the project:
-<br/>
-<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
-<img src="https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white"/>
-<img src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white"/>
-<img src="https://camo.githubusercontent.com/02621d023c99135970b1abbfe932b6a6a0b2e42aaebedae5f8299fd88d9ce029/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6178696f732532302d2532333230323332612e7376673f267374796c653d666f722d7468652d626164676526636f6c6f723d696e666f726d6174696f6e616c"/>
-<img src="https://camo.githubusercontent.com/41d7c6da357d2344cd832f0d738839951e0d43a23064154c07d80a67dd74c5f4/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f72656163742d69636f6e732532302d2532333230323332612e7376673f267374796c653d666f722d7468652d626164676526636f6c6f723d663238646337266c6f676f3d72656163742d69636f6e73266c6f676f436f6c6f723d253233363144414642"/>
-### More
-Beside this, the project has:
-- [react-loader-spinner](https://www.npmjs.com/package/react-loader-spinner)
-- [react-circular-progressbar](https://www.npmjs.com/package/react-circular-progressbar)
-- [dayjs](https://day.js.org/)
-- [react-calendar](https://www.npmjs.com/package/react-calendar)
+Após criar conta, ainda será possível:
+- marcar um filme com "assistido" ou como "planejando assistir";
+- vizualizar todos os filmes que foram marcados;
+- marcar um filme como favorito;
+- acessar o perfil;
+- visualizar todos os filmes favoritados;
+- procurar pessoas pelo nome de usuário;
+- visualizar seu histórico de interações com o aplicativo;
+- comentar e curtir histórico de interações de outras pessoas e o seu próprio;
+- editar o nome de usuário, foto de capa e foto de perfil;
+- avaliar e salvar sua avaliação para filmes.
+
+## Tecnologias
+Algumas das tecnologias utilizadas para desenvolvimento deste projeto:
+
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
+
 
 
 ## How to run
-1. Clone this repository
-2. Install dependencies
-<code>NPM i    </code>
-3. You can run de fron whit
+1. Faça um clone desse repositório
+2. Instale as dependências com o comando:
+<code>NPM i</code>
+3. Inicie o backend na porta 4000 <a href="blank">(saiba mais)</a>
+4. Inicie o projeto com o comando:
 <code>NPM start</code>
+
+Acesse a aplicação no link "http://localhost/3000"
