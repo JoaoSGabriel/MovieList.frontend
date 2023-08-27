@@ -4,7 +4,7 @@
 
 Uma ótima forma de catalogar os seus filmes! O aplicativo ideal para você juntar com seus amigos e deixar catalogado os seus filmes favoritos, os ja assistidos e os que planeja assistir!
 
-Você pode acessar por <a href="http://18.206.126.112/">aqui!</a>
+Você pode acessar por <a href="https://movie-list-frontend.vercel.app/">aqui!</a>
 
 ## Sobre
 Sem criar conta você poderá:
